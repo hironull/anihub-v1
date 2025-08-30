@@ -1,5 +1,5 @@
 [nix]
-packages = ["nodejs", "npm", "yarn"]
+packages = ["nodejs_20", "npm", "yarn"]
 
 [workflows]
 runButton = "Start App"
