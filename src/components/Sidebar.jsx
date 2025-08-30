@@ -80,30 +80,15 @@ const Sidebar = () => {
           })}
         </ul>
         
-        {/* Enhanced Genres Section */}
-        <div className="mt-10">
-          <h3 className="text-white/60 text-sm uppercase tracking-widest mb-6 font-bold gradient-text">Genres</h3>
-          <div className="glass-dark rounded-xl p-4 border border-white/20">
+        {/* Genres Section */}
+        <div className="mt-8">
+          <h3 className="text-white/40 text-xs uppercase tracking-widest mb-4 font-medium">Genres</h3>
+          <div className="bg-black/40 border border-white/10 rounded-lg p-4">
             <Genres
               event={sidebarHandler}
               className="genre-item"
             />
           </div>
-        </div>
-        
-        {/* Floating Elements for Visual Appeal */}
-        <div className="mt-8 relative">
-          {[...Array(3)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/30 rounded-full floating-element"
-              style={{
-                left: `${20 + i * 30}%`,
-                animationDelay: `${i * 2}s`,
-                animationDuration: `${4 + i}s`
-              }}
-            ></div>
-          ))}
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const Genres = ({ event, className }) => {
   const { play: playClickSound } = useClickSound();
 
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
       {genres.map((genre) => (
         <Link
           key={genre}
@@ -16,7 +16,7 @@ const Genres = ({ event, className }) => {
             playClickSound();
             event && event();
           }}
-          className="glass text-center px-3 py-2 text-xs font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-full"
+          className="bg-black/40 border border-white/20 hover:border-white/40 text-center px-3 py-2 text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-all duration-200 rounded-lg capitalize"
           title={genre}
         >
           {genre}

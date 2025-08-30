@@ -8,18 +8,6 @@ import CircleRatting from "../components/CircleRatting";
 
 const InfoLayout = ({ data, showBigPoster }) => {
   const [showFull, setShowFull] = useState(false);
-
-  // Regular expression to check if the string ends with a number
-
-  const colors = [
-    "#ffffff",
-    "#cccccc",
-    "#999999",
-    "#666666",
-    "#333333",
-    "#000000",
-    "#ffffff",
-  ];
   return (
     <>
       <div className="banner min-h-[700px] relative w-full bg-black matrix-bg pt-10 md:pt-20 hologram-effect">
@@ -95,15 +83,12 @@ const InfoLayout = ({ data, showBigPoster }) => {
                 </Link>
               </div>
             )}
-            <div className="genres rounded-child flex flex-wrap">
-              {data.genres.map((genre, index) => (
+            <div className="genres flex flex-wrap gap-2 my-4">
+              {data.genres.map((genre) => (
                 <Link to={`/animes/genre/${genre.toLowerCase()}`} key={genre}>
-                  <p
-                    style={{ background: colors[index % colors.length], color: index % 2 === 0 ? '#000000' : '#ffffff' }}
-                    className="px-2 border border-white text-current py-0.5 rounded-none hover-glow transition-all duration-300"
-                  >
+                  <span className="bg-black/40 border border-white/20 hover:border-white/40 px-3 py-1 text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-all duration-200 rounded-lg capitalize">
                     {genre}
-                  </p>
+                  </span>
                 </Link>
               ))}
             </div>
