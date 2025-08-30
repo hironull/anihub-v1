@@ -1,10 +1,9 @@
-
 import React from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import AZ from "../layouts/AZ";
 import { FaGithub, FaTelegram } from "react-icons/fa6";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLink } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -59,7 +58,7 @@ const Footer = () => {
                 className="text-white font-semibold hover:text-gray-300 transition-colors duration-300 flex items-center gap-1 group"
               >
                 Hiro
-                <FaExternalLinkAlt className="text-xs opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+                <FaExternalLink className="text-xs opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
               </a>
             </div>
           </div>
