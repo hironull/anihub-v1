@@ -3,7 +3,8 @@ import React from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import AZ from "../layouts/AZ";
-import { FaGithub, FaTelegram, FaExternalLinkAlt } from "react-icons/fa6";
+import { FaGithub, FaTelegram } from "react-icons/fa6";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
