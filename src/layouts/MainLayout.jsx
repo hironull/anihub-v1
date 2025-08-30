@@ -9,17 +9,17 @@ const MainLayout = ({ title, data, endpoint }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div className="pb-8">
-      <div className="header flex justify-between items-center mb-6">
-        <Heading>{title}</Heading>
+    <div className="pb-6">
+      <div className="header flex justify-between items-center mb-4">
+        <Heading className="text-lg">{title}</Heading>
         <Link to={`/animes/${endpoint}`} onClick={playClickSound}>
-          <div className="sleek-btn inline-flex items-center gap-2 px-4 py-2 text-sm font-medium">
+          <div className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-white/70 hover:text-white transition-colors duration-200">
             <span>View more</span>
-            <FaAngleRight className="text-xs" />
+            <FaAngleRight className="text-[10px]" />
           </div>
         </Link>
       </div>
-      <div className="wrapper grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div className="wrapper grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3">
         {data &&
           data.map((item) => (
             <div key={item.id} className="modern-anime-card">

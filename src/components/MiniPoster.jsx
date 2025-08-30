@@ -7,11 +7,11 @@ const MiniPoster = ({ item }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div key={item.id} className="group flex items-center gap-4 p-3 hover:bg-white/5 rounded-lg transition-all duration-300">
+    <div key={item.id} className="group flex items-center gap-3 p-2 hover:bg-white/5 rounded-lg transition-all duration-200">
       <Link className="" to={`/anime/${item.id}`} onClick={playClickSound}>
-        <div className="poster glass flex-shrink-0 relative overflow-hidden w-16 h-20 rounded-lg">
+        <div className="poster flex-shrink-0 relative overflow-hidden w-12 h-16 rounded-md border border-white/10">
           <img
-            className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+            className="h-full w-full object-cover object-center transition-transform duration-200 group-hover:scale-105"
             src={item.poster}
             alt={item.title}
             loading="lazy"
@@ -20,11 +20,11 @@ const MiniPoster = ({ item }) => {
       </Link>
       <div className="text flex-1">
         <Link to={`/anime/${item.id}`} onClick={playClickSound}>
-          <h3 className="title hover:text-white mb-2 font-medium text-sm line-clamp-2 leading-tight text-white/90 transition-colors duration-200">
+          <h3 className="title hover:text-white mb-1 font-medium text-xs line-clamp-2 leading-tight text-white/80 transition-colors duration-200">
             {item.title}
           </h3>
         </Link>
-        <div className="flex items-center gap-2 text-xs text-white/60">
+        <div className="flex items-center gap-1.5 text-[10px] text-white/50">
           <SoundsInfo episodes={item.episodes} />
           {item.type && (
             <>

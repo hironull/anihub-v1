@@ -12,17 +12,17 @@ const TrendingLayout = ({ data }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div className="trending mt-8">
-      <Heading className="mb-6">Trending Now</Heading>
+    <div className="trending mt-6">
+      <Heading className="mb-4 text-lg">Trending Now</Heading>
       <Swiper
         modules={[Navigation]}
         navigation
         spaceBetween={20}
         breakpoints={{
-          0: { slidesPerView: 2 },
-          640: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
-          1320: { slidesPerView: 6 },
+          0: { slidesPerView: 3 },
+          640: { slidesPerView: 4 },
+          1024: { slidesPerView: 6 },
+          1320: { slidesPerView: 8 },
         }}
         className="trending-swiper"
       >
@@ -33,22 +33,22 @@ const TrendingLayout = ({ data }) => {
                 <Link
                   to={`/anime/${item.id}`}
                   onClick={playClickSound}
-                  className="modern-card block w-full h-0 pb-[150%] relative overflow-hidden"
+                  className="block w-full h-0 pb-[135%] relative overflow-hidden rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
                 >
                   <img
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                     src={item.poster}
                     alt={item.title}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="glass-dark absolute top-3 left-3 px-3 py-1">
-                    <span className="text-white text-xs font-bold">#{item.rank}</span>
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                  <div className="absolute top-2 left-2 bg-black/70 px-2 py-1 rounded text-white text-[10px] font-bold">
+                    #{item.rank}
                   </div>
                 </Link>
                 <h3
                   title={item.title}
-                  className="text-sm font-medium text-center mt-3 line-clamp-2 leading-tight text-white/90 group-hover:text-white transition-colors duration-200"
+                  className="text-xs font-medium text-center mt-2 line-clamp-2 leading-tight text-white/80 group-hover:text-white transition-colors duration-200"
                 >
                   {item.title}
                 </h3>
