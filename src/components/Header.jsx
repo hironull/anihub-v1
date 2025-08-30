@@ -64,118 +64,129 @@ const Header = () => {
   };
   return (
     <div className="relative z-[100]">
-      <div className="fixed bg-card w-full py-2 border-b-2 border-white cyber-grid">
-        <div className="flex gap-2 px-5 md:px-10 md:gap-5 justify-between items-center">
-          <div className="left flex gap-2 md:gap-5 items-center">
+      <div className="fixed bg-gradient-to-r from-black/95 via-black/90 to-black/95 backdrop-blur-xl w-full py-3 border-b border-white/20 cyber-grid neural-network">
+        <div className="flex gap-3 px-5 md:px-10 md:gap-6 justify-between items-center">
+          <div className="left flex gap-3 md:gap-6 items-center">
             <button 
-              className="menu sleek-btn p-3 hover-glow btn-animate"
+              className="menu glass-dark p-4 rounded-xl neon-glow magnetic-hover group transition-all duration-300"
               onClick={() => {
                 playClickSound();
                 sidebarHandler();
               }}
             >
-              <FaBars size={20} />
+              <FaBars size={20} className="group-hover:rotate-90 transition-transform duration-300" />
             </button>
-            <Logo />
+            <div className="floating-element">
+              <Logo />
+            </div>
           </div>
-          <div className="right justify-end lg:basis-[40%] flex gap-2 md:gap-5 items-center">
+          <div className="right justify-end lg:basis-[40%] flex gap-3 md:gap-6 items-center">
             <button
-              className="sleek-btn px-4 py-3 hover-glow btn-animate"
+              className="glass-dark px-5 py-4 rounded-xl neon-glow magnetic-hover group transition-all duration-300"
               onClick={() => {
                 playClickSound();
                 setShowSearchBar(!showSearchBar);
               }}
             >
-              {showSearchBar ? <FaXmark size={18} /> : <FaSearch size={18} />}
+              {showSearchBar ? 
+                <FaXmark size={18} className="group-hover:rotate-90 transition-transform duration-300" /> : 
+                <FaSearch size={18} className="group-hover:scale-110 transition-transform duration-300" />
+              }
             </button>
           </div>
         </div>
         <form
           action={`/search?keyword=${value}`}
           onSubmit={handleSubmit}
-          className={`search mt-2 px-4 relative items-center w-full ${
-            showSearchBar ? "flex" : "hidden"
+          className={`search mt-4 mx-4 relative items-center w-auto transition-all duration-500 ${
+            showSearchBar ? "flex opacity-100 translate-y-0" : "hidden opacity-0 -translate-y-4"
           }`}
         >
-          <input
-            value={value}
-            onChange={changeInput}
-            placeholder="SEARCH ANIME"
-            type="text"
-            className="futuristic-input w-full px-4 py-2 text-white bg-transparent border-white"
-          />
-          <div className="btns absolute right-8 flex justify-center items-center gap-3">
-            {value.length > 1 && (
+          <div className="relative w-full glass-dark rounded-2xl p-2">
+            <input
+              value={value}
+              onChange={changeInput}
+              placeholder="Search anime..."
+              type="text"
+              className="futuristic-input w-full px-6 py-4 text-white bg-transparent border-2 border-white/30 rounded-xl focus:border-white/80 transition-all duration-300 placeholder:text-white/50"
+            />
+            <div className="btns absolute right-4 top-1/2 transform -translate-y-1/2 flex justify-center items-center gap-3">
+              {value.length > 1 && (
+                <button 
+                  onClick={(e) => {
+                    playClickSound();
+                    emptyInput(e);
+                  }} 
+                  type="reset" 
+                  className="glass-dark text-white p-3 rounded-full magnetic-hover group transition-all duration-300"
+                >
+                  <FaXmark size={14} className="group-hover:rotate-90 transition-transform duration-300" />
+                </button>
+              )}
               <button 
-                onClick={(e) => {
-                  playClickSound();
-                  emptyInput(e);
-                }} 
-                type="reset" 
-                className="glass text-white hover-glow p-2 rounded-full btn-animate"
+                type="submit" 
+                className="sleek-btn text-white p-3 rounded-full magnetic-hover group transition-all duration-300"
+                onClick={playClickSound}
               >
-                <FaXmark size={14} />
+                <FaSearch size={14} className="group-hover:scale-110 transition-transform duration-300" />
               </button>
-            )}
-            <button 
-              type="submit" 
-              className="sleek-btn text-white hover-glow p-2 btn-animate"
-              onClick={playClickSound}
-            >
-              <FaSearch size={14} />
-            </button>
+            </div>
           </div>
         </form>
-        <div className={`${showSearchBar ? "flex flex-col mt-4" : "hidden"}`}>
+        <div className={`transition-all duration-500 mx-4 ${showSearchBar ? "flex flex-col mt-4 opacity-100" : "hidden opacity-0"}`}>
           {isLoading ? (
-            <Loader />
+            <div className="glass-dark rounded-2xl p-6">
+              <Loader />
+            </div>
           ) : data && data?.data.length ? (
-            <>
-              {data?.data?.map((item) => (
+            <div className="glass-dark rounded-2xl overflow-hidden border border-white/20">
+              {data?.data?.map((item, index) => (
                 <div
                   onClick={() => {
                     playClickSound();
                     navigateToAnimePage(item.id);
                   }}
-                  className="flex w-full justify-start items-start bg-background hover-glow px-3 py-5 gap-4 border-b border-white cursor-pointer transition-all duration-300"
+                  className="flex w-full justify-start items-start hover:bg-white/10 px-4 py-4 gap-4 border-b border-white/10 last:border-b-0 cursor-pointer transition-all duration-300 magnetic-hover group"
                   key={item.id}
+                  style={{animationDelay: `${index * 0.1}s`}}
                 >
-                  <div className="poster shrink-0 pb-14 relative w-10">
+                  <div className="poster shrink-0 pb-14 relative w-12 rounded-lg overflow-hidden">
                     <img
-                      className="h-full w-full inset-0 absolute object-cover object-center"
+                      className="h-full w-full inset-0 absolute object-cover object-center group-hover:scale-110 transition-transform duration-300"
                       src={item.poster}
                       alt={item.title}
                     />
                   </div>
-                  <div className="info">
-                    <h4 className="title line-clamp-2">{item.title}</h4>
-                    <h6 className="gray text-sm line-clamp-1">
+                  <div className="info flex-1">
+                    <h4 className="title line-clamp-2 font-semibold group-hover:text-white transition-colors duration-300">{item.title}</h4>
+                    <h6 className="text-white/60 text-sm line-clamp-1 mb-2">
                       {item.alternativeTitle}
                     </h6>
-                    <div className="flex items-center gap-2 text-sm gray">
-                      <h6>{item.aired}</h6>
-                      <span className="h-1 w-1 rounded-full bg-primary"></span>
-                      <h6>{item.type}</h6>
-                      <span className="h-1 w-1 rounded-full bg-primary"></span>
-                      <h6>{item.duration}</h6>
+                    <div className="flex items-center gap-2 text-xs text-white/50">
+                      <span className="glass px-2 py-1 rounded-full">{item.aired}</span>
+                      <span className="glass px-2 py-1 rounded-full">{item.type}</span>
+                      <span className="glass px-2 py-1 rounded-full">{item.duration}</span>
                     </div>
                   </div>
                 </div>
               ))}
               <button
-                className="py-2 flex justify-center items-center gap-2 bg-primary text-black"
+                className="w-full py-4 flex justify-center items-center gap-3 bg-gradient-to-r from-white to-gray-200 text-black font-bold hover:from-gray-200 hover:to-white transition-all duration-300 magnetic-hover group"
                 onClick={handleSubmit}
               >
-                <span className="text-lg font-bold">view More</span>{" "}
-                <FaArrowCircleRight />
+                <span className="text-lg">View More Results</span>
+                <FaArrowCircleRight className="group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-            </>
+            </div>
           ) : (
             <>
               {value.length > 2 && (
-                <h1 className="text-center text-lg text-primary">
-                  anime not found :(
-                </h1>
+                <div className="glass-dark rounded-2xl p-6 text-center">
+                  <h1 className="text-lg text-white/70 font-medium">
+                    No anime found matching your search
+                  </h1>
+                  <p className="text-sm text-white/50 mt-2">Try different keywords or check the spelling</p>
+                </div>
               )}
             </>
           )}

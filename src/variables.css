@@ -3,12 +3,39 @@
 @tailwind utilities;
 
 :root {
+  /* Enhanced Black & White Palette */
   --primary: #ffffff;
+  --secondary: #f8f9fa;
+  --accent: #e9ecef;
   --background: #000000;
-  --lightbg: #111111;
-  --card: #000000;
-  --btnbg: #222222;
-  --yellow: #ffffff;
-  --purple: #ffffff;
-  --pink: #ffffff;
+  --background-subtle: #0a0a0a;
+  --background-elevated: #121212;
+  --surface: #1a1a1a;
+  --surface-elevated: #2a2a2a;
+  --border: #333333;
+  --border-light: #404040;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  --text-disabled: #4d4d4d;
+  
+  /* Gradient Definitions */
+  --gradient-primary: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  --gradient-surface: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --gradient-cyber: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  
+  /* Shadow Definitions */
+  --shadow-sm: 0 2px 8px rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 8px 32px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 20px 60px rgba(255, 255, 255, 0.15);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.1);
+  
+  /* Legacy Variables (for compatibility) */
+  --lightbg: var(--surface);
+  --card: var(--background-elevated);
+  --btnbg: var(--surface-elevated);
+  --yellow: var(--primary);
+  --purple: var(--primary);
+  --pink: var(--primary);
 }
