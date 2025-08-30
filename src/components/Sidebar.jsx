@@ -38,28 +38,25 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar transition-all duration-700 fixed overflow-y-auto h-full z-[100] inset-0 w-80 md:w-96 glass-dark border-r border-white/30 neural-network quantum-field ${
-        isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-[-100%] opacity-0"
+      className={`sidebar transition-all duration-500 fixed overflow-y-auto h-full z-[100] inset-0 w-72 md:w-80 glass-dark border-r border-white/20 ${
+        isSidebarOpen ? "translate-x-0" : "translate-x-[-100%]"
       }`}
     >
-      {/* Enhanced Header */}
-      <div className="p-6 border-b border-white/20 bg-gradient-to-r from-white/5 to-transparent">
+      <div className="p-6 border-b border-white/10">
         <button
-          className="sleek-btn w-full flex items-center justify-center gap-4 px-6 py-4 text-base font-semibold neon-glow magnetic-hover group transition-all duration-300"
+          className="sleek-btn w-full flex items-center justify-center gap-3 px-4 py-3 text-sm font-medium"
           onClick={() => {
             playClickSound();
             sidebarHandler();
           }}
         >
-          <FaAngleLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
+          <FaAngleLeft />
           <span>Close Menu</span>
         </button>
       </div>
-      
-      {/* Enhanced Navigation Section */}
-      <div className="p-6">
-        <h3 className="text-white/60 text-sm uppercase tracking-widest mb-6 font-bold gradient-text">Navigation</h3>
-        <ul className="space-y-2">
+      <div className="p-4">
+        <h3 className="text-white/40 text-xs uppercase tracking-widest mb-4 font-medium">Navigation</h3>
+        <ul className="space-y-1">
           {list.map((item, index) => {
             const IconComponent = item.icon;
             return (

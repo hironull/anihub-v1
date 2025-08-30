@@ -15,70 +15,66 @@ const Navbar = () => {
     { name: "Top Airing", id: "/animes/top-airing", icon: FaRocket },
   ];
   return (
-    <nav className="neural-network quantum-field relative">
-      {/* Desktop Navigation */}
-      <div className="nav hidden md:flex justify-center items-center py-6">
-        <ul className="flex gap-6">
+    <nav className="cyber-grid">
+      <div className="nav hidden md:flex justify-center items-center py-4">
+        <ul className="flex gap-8">
           {navLinks.map((item, index) => {
             const IconComponent = item.icon;
             return (
               <li 
-                className="group" 
+                className="hover:text-primary font-bold transition-all duration-300" 
                 key={item.id}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <a 
-                  className="glass-dark px-6 py-3 rounded-xl flex items-center gap-3 text-sm font-medium hover:bg-white/15 transition-all duration-300 magnetic-hover border border-white/20 hover:border-white/40 glint-effect" 
+                  className="futuristic-btn px-4 py-2 flex items-center gap-2 text-center text-sm" 
                   href={item.id}
                   onClick={playClickSound}
                 >
-                  <IconComponent className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                  <IconComponent className="text-lg" />
+                  <span>{item.name}</span>
                 </a>
               </li>
             );
           })}
         </ul>
       </div>
-      
-      {/* Mobile Navigation */}
       <div className="block md:hidden relative w-full">
         <button 
           onClick={() => {
             playClickSound();
             setShow(!show);
           }}
-          className="glass-dark m-5 px-6 py-4 rounded-xl neon-glow magnetic-hover group transition-all duration-300"
+          className="futuristic-btn m-5 px-4 py-2 glow-hover"
         >
-          <div className="flex justify-center items-center gap-3 text-base font-medium">
-            <FaAlignJustify className="group-hover:rotate-90 transition-transform duration-300" />
-            <span>MENU</span>
-          </div>
+          <h1 className="flex justify-center items-center gap-2 text-sm">
+            <FaAlignJustify />
+            MENU
+          </h1>
         </button>
-        
         <ul
           className={`${
-            show ? "flex slide-in-left opacity-100" : "hidden opacity-0"
-          } w-11/12 mx-3 absolute flex-col justify-center items-center z-10 glass-dark border border-white/30 rounded-2xl py-6 gap-3 transition-all duration-500 neural-network`}
+            show ? "flex slide-in-left" : "hidden"
+          } w-11/12 mx-3 absolute flex-col justify-center items-center z-10 bg-background border-2 border-white rounded-md py-5 gap-3 md:gap-10 cyber-grid`}
         >
           {navLinks.map((item, index) => {
             const IconComponent = item.icon;
             return (
               <li
-                className="w-full px-4 popup-animation"
+                className="hover:text-primary hover-glow w-full text-center py-2"
                 key={item.id}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Link 
-                  className="glass flex items-center justify-center gap-3 w-full py-4 rounded-xl font-medium hover:bg-white/15 transition-all duration-300 magnetic-hover border border-white/10 hover:border-white/30 group" 
+                  className="futuristic-btn w-full flex items-center justify-center gap-2 py-2" 
                   to={item.id}
                   onClick={() => {
                     playClickSound();
                     setShow(false);
                   }}
                 >
-                  <IconComponent className="text-lg group-hover:scale-110 transition-transform duration-300" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>
+                  <IconComponent className="text-lg" />
+                  <span>{item.name}</span>
                 </Link>
               </li>
             );

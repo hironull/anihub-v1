@@ -78,10 +78,10 @@
 }
 
 .modern-card:hover {
-  transform: translateY(-12px) scale(1.03);
+  transform: translateY(-4px);
   background: linear-gradient(145deg, rgba(26, 26, 26, 0.8) 0%, rgba(15, 15, 15, 0.6) 100%);
   border-color: var(--border-light);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  box-shadow: var(--shadow-md);
 }
 
 .modern-card:hover::before {
@@ -395,12 +395,9 @@ input:focus {
 }
 
 /* Glow effect classes */
-.glow-effect {
-  animation: glow 2s ease-in-out infinite;
-}
 
 .glow-hover:hover {
-  animation: glow 1s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -410,27 +407,8 @@ input:focus {
   overflow: hidden;
 }
 
-.glint-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transform: translateX(-100%);
-  animation: glint 3s ease-in-out infinite;
-}
 
 /* Popup animation */
-.popup-animation {
-  animation: popup 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
 
 /* Futuristic button */
 .futuristic-btn {
@@ -488,9 +466,8 @@ input:focus {
 .futuristic-input:focus {
   outline: none;
   border-color: #ffffff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .futuristic-input::placeholder {
@@ -530,48 +507,22 @@ input:focus {
 .cyber-grid {
   position: relative;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-  background-size: 60px 60px, 60px 60px, 200px 200px, 200px 200px;
-  background-position: 0 0, 0 0, 0 0, 0 0;
-  animation: cyber-grid-flow 30s linear infinite;
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: cyber-grid-flow 60s linear infinite;
 }
 
-.cyber-grid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.01) 50%, transparent 52%);
-  animation: cyber-scan 8s ease-in-out infinite;
-  pointer-events: none;
-}
 
 @keyframes cyber-grid-flow {
   0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-position: 0 0;
   }
   100% {
-    background-position: 60px 60px, 60px 60px, 200px 200px, -200px -200px;
+    background-position: 30px 30px;
   }
 }
 
-@keyframes cyber-scan {
-  0%, 100% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(200%);
-  }
-}
 
 /* Loading effect */
 .loading-shimmer {
@@ -595,21 +546,7 @@ input:focus {
 }
 
 /* Enhanced Futuristic Elements */
-.matrix-bg {
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 15px 15px;
-  animation: matrix-float 20s linear infinite;
-}
 
-@keyframes matrix-float {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 100px 100px;
-  }
-}
 
 .hologram-effect {
   position: relative;
