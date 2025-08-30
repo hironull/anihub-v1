@@ -6,6 +6,7 @@ import { useApi } from "../services/useApi";
 import Logo from "./Logo";
 import useSidebarStore from "../store/sidebarStore";
 import Loader from "./Loader";
+import { useClickSound } from "../utils/clickSound";
 
 const Header = () => {
   const sidebarHandler = useSidebarStore((state) => state.toggleSidebar);
@@ -13,6 +14,7 @@ const Header = () => {
   const [value, setValue] = useState("");
   const [debouncedValue, setDebouncedValue] = useState(""); // For debouncing
   const timeoutRef = useRef(null);
+  const { play: playClickSound } = useClickSound();
 
   const navigate = useNavigate();
 
@@ -62,20 +64,27 @@ const Header = () => {
   };
   return (
     <div className="relative z-[100]">
-      <div className="fixed bg-card w-full  py-2">
+      <div className="fixed bg-card w-full py-2 border-b-2 border-white cyber-grid">
         <div className="flex gap-2 px-5 md:px-10 md:gap-5 justify-between items-center">
           <div className="left flex gap-2 md:gap-5 items-center">
-            <div className="menu" onClick={sidebarHandler}>
-              <h1 className="cursor-pointer">
-                <FaBars size={25} />
-              </h1>
+            <div 
+              className="menu cursor-pointer glow-hover p-2 border border-white rounded"
+              onClick={() => {
+                playClickSound();
+                sidebarHandler();
+              }}
+            >
+              <FaBars size={25} />
             </div>
             <Logo />
           </div>
           <div className="right justify-end lg:basis-[40%] flex gap-2 md:gap-5 items-center">
             <button
-              className="text-xl"
-              onClick={() => setShowSearchBar(!showSearchBar)}
+              className="text-xl futuristic-btn px-3 py-2 glow-hover"
+              onClick={() => {
+                playClickSound();
+                setShowSearchBar(!showSearchBar);
+              }}
             >
               {showSearchBar ? <FaXmark /> : <FaSearch />}
             </button>
@@ -91,17 +100,28 @@ const Header = () => {
           <input
             value={value}
             onChange={changeInput}
-            placeholder="search anime"
+            placeholder="SEARCH ANIME"
             type="text"
-            className="header-search w-full bg-[#FBF8EF] px-2 text-lg text-black py-1 rounded-md"
+            className="futuristic-input w-full px-4 py-2 text-white bg-transparent border-white"
           />
           <div className="btns absolute right-8 flex justify-center items-center gap-3">
             {value.length > 1 && (
-              <button onClick={emptyInput} type="reset" className="text-black">
+              <button 
+                onClick={(e) => {
+                  playClickSound();
+                  emptyInput(e);
+                }} 
+                type="reset" 
+                className="text-white hover-glow p-1"
+              >
                 <FaXmark />
               </button>
             )}
-            <button type="submit" className="text-black">
+            <button 
+              type="submit" 
+              className="text-white hover-glow p-1"
+              onClick={playClickSound}
+            >
               <FaSearch />
             </button>
           </div>
@@ -113,8 +133,11 @@ const Header = () => {
             <>
               {data?.data?.map((item) => (
                 <div
-                  onClick={() => navigateToAnimePage(item.id)}
-                  className="flex w-full justify-start items-start bg-backGround hover:bg-lightBg px-3 py-5 gap-4"
+                  onClick={() => {
+                    playClickSound();
+                    navigateToAnimePage(item.id);
+                  }}
+                  className="flex w-full justify-start items-start bg-background hover-glow px-3 py-5 gap-4 border-b border-white cursor-pointer transition-all duration-300"
                   key={item.id}
                 >
                   <div className="poster shrink-0 pb-14 relative w-10">

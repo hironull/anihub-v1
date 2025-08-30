@@ -4,10 +4,12 @@ import Genres from "./Genres";
 
 import { useEffect } from "react";
 import { FaAngleLeft } from "react-icons/fa";
+import { useClickSound } from "../utils/clickSound";
 
 const Sidebar = () => {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
   const sidebarHandler = useSidebarStore((state) => state.toggleSidebar);
+  const { play: playClickSound } = useClickSound();
 
   const location = useLocation();
   const key = location.key;
@@ -36,28 +38,34 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar transition-all fixed overflow-scroll h-full z-[100] inset-0 w-64 md:w-80  bg-[rgba(255,255,255,.1);] ${
-        isSidebarOpen ? "translate-x-0" : "translate-x-[-100%]"
+      className={`sidebar transition-all fixed overflow-scroll h-full z-[100] inset-0 w-64 md:w-80 bg-black border-r-2 border-white cyber-grid ${
+        isSidebarOpen ? "translate-x-0 slide-in-left" : "translate-x-[-100%]"
       }`}
     >
       <button
-        className="w-full pt-4 pl-2 flex items-center gap-2 hover:text-primary text-base md:text-xl"
-        onClick={sidebarHandler}
+        className="w-full pt-4 pl-2 flex items-center gap-2 hover:text-primary text-base md:text-xl futuristic-btn glow-hover"
+        onClick={() => {
+          playClickSound();
+          sidebarHandler();
+        }}
       >
         <FaAngleLeft />
-        <span>close menu</span>
+        <span>CLOSE MENU</span>
       </button>
       <ul className="py-4">
         {list.map((item) => (
           <li
             key={item.link}
-            onClick={sidebarHandler}
-            className=" py-4 pl-4 hover:text-primary  text-base md:text-lg border-b border-[rgba(255,255,255,.05)] w-full"
+            onClick={() => {
+              playClickSound();
+              sidebarHandler();
+            }}
+            className="py-4 pl-4 hover:text-primary text-base md:text-lg border-b border-white w-full hover-glow transition-all duration-300"
           >
-            <Link to={item.link}>{item.name}</Link>
+            <Link to={item.link} className="uppercase tracking-wide">{item.name}</Link>
           </li>
         ))}
-        <li className=" py-4 pl-2 text-base md:text-lg w-full">genres</li>
+        <li className="py-4 pl-2 text-base md:text-lg w-full uppercase tracking-widest border-t border-white">GENRES</li>
         <Genres
           event={sidebarHandler}
           className="w-1/2 my-2 pl-2 hover:opacity-[.7]"

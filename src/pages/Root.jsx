@@ -5,10 +5,11 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import { useClickSound } from "../utils/clickSound";
 
 const Root = () => {
   const [value, setValue] = useState("");
-
+  const { play: playClickSound } = useClickSound();
   const navigate = useNavigate();
 
   const changeInput = (e) => {
@@ -16,11 +17,12 @@ const Root = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    playClickSound();
     navigate(`/search?keyword=${value}`);
   };
   return (
-    <div className="h-[100dvh] bg-black">
-      <div className=" bg-black">
+    <div className="h-[100dvh] bg-black cyber-grid">
+      <div className="bg-black">
         <Navbar />
         <div
           className="box relative py-3 px-2 md:p-5 mt-4 bg-black rounded-lg bg-cover bg-center"
@@ -35,18 +37,19 @@ const Root = () => {
               <form
                 onSubmit={handleSubmit}
                 action={`/search?keyword=${value}`}
-                className="flex h-10 justify-center items-center"
+                className="flex h-12 justify-center items-center gap-2"
               >
                 <input
                   value={value}
                   onChange={changeInput}
                   type="text"
-                  placeholder="search anime..."
-                  className="w-full text-lg md:w-1/2 px-3 bg-white text-black input h-full"
+                  placeholder="SEARCH ANIME..."
+                  className="futuristic-input w-full text-lg md:w-1/2 px-4 h-full"
                 />
                 <button
                   type="submit"
-                  className="px-3 bg-primary text-black btn w-11  h-full"
+                  className="futuristic-btn px-4 glow-hover h-full"
+                  onClick={playClickSound}
                 >
                   <FaSearch />
                 </button>
@@ -61,10 +64,11 @@ const Root = () => {
               <div className="explore w-full flex justify-center items-center mt-5 ">
                 <Link
                   to="/home"
-                  className="font-bold bg-primary px-4 py-2 rounded-xl w-full md:w-1/2"
+                  className="futuristic-btn font-bold px-6 py-3 w-full md:w-1/2 glow-effect popup-animation hover-scale"
+                  onClick={playClickSound}
                 >
-                  <h1 className="flex text-black font-extrabold justify-center items-center gap-2 text-base">
-                    <p> Explore Animes</p>
+                  <h1 className="flex font-extrabold justify-center items-center gap-3 text-base tracking-widest">
+                    <p>EXPLORE ANIMES</p>
                     <FaArrowCircleRight />
                   </h1>
                 </Link>

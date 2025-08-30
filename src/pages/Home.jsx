@@ -38,14 +38,14 @@ const Home = () => {
     <div className="relative">
       <Helmet>
         <title>
-          Watch Anime Online, Free Anime Streaming Online on AniKaisen Anime
+          Watch Anime Online, Free Anime Streaming Online on AniHub Anime
           Website
         </title>
         <meta
           name="description"
-          content=" watanuki to is a free no ads anime site to watch free anime. Online anime streaming at watanuki with DUB, SUB in HD watanuki.shop."
+          content=" AniHub is a free no ads anime site to watch free anime. Online anime streaming at AniHub with DUB, SUB in HD."
         />
-        <meta property="og:title" content="home - watanuki" />
+        <meta property="og:title" content="home - AniHub" />
       </Helmet>
       {isLoading ? (
         <Loader className="h-[100dvh]" />
