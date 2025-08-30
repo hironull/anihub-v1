@@ -1,2 +1,14 @@
 [nix]
 packages = ["wget", "unzipNLS"]
+
+[workflows]
+runButton = "Start App"
+
+[[workflows.workflow]]
+name = "Start App"
+author = 47021045
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
