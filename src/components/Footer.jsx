@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="bg-black text-white border-t-2 border-gray-800 mt-10">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           {/* Logo and Description */}
           <div className="flex flex-col items-center md:items-start">
             <Logo />
@@ -21,38 +21,13 @@ const Footer = () => {
           </div>
 
           {/* A-Z List Section */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center md:items-end">
             <h3 className="text-white font-bold text-lg mb-4">Browse Anime</h3>
             <div className="text-center">
               <p className="text-gray-400 text-sm mb-3">
                 Search anime alphabetically A to Z
               </p>
               <AZ />
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex flex-col items-center md:items-end">
-            <h3 className="text-white font-bold text-lg mb-4">Connect</h3>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/space"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 text-2xl"
-                title="GitHub"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://t.me/AniKaisenofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-2xl"
-                title="Telegram"
-              >
-                <FaTelegram />
-              </a>
             </div>
           </div>
         </div>
@@ -71,7 +46,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <div className="text-gray-500 text-sm">
-              © 2024 AniHub. All rights reserved.
+              © 2025 AniHub. All rights reserved.
             </div>
 
             {/* Developer Credit */}
