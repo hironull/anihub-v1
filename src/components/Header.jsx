@@ -67,26 +67,26 @@ const Header = () => {
       <div className="fixed bg-card w-full py-2 border-b-2 border-white cyber-grid">
         <div className="flex gap-2 px-5 md:px-10 md:gap-5 justify-between items-center">
           <div className="left flex gap-2 md:gap-5 items-center">
-            <div 
-              className="menu cursor-pointer glow-hover p-2 border border-white rounded"
+            <button 
+              className="menu sleek-btn p-3 hover-glow btn-animate"
               onClick={() => {
                 playClickSound();
                 sidebarHandler();
               }}
             >
-              <FaBars size={25} />
-            </div>
+              <FaBars size={20} />
+            </button>
             <Logo />
           </div>
           <div className="right justify-end lg:basis-[40%] flex gap-2 md:gap-5 items-center">
             <button
-              className="text-xl futuristic-btn px-3 py-2 glow-hover"
+              className="sleek-btn px-4 py-3 hover-glow btn-animate"
               onClick={() => {
                 playClickSound();
                 setShowSearchBar(!showSearchBar);
               }}
             >
-              {showSearchBar ? <FaXmark /> : <FaSearch />}
+              {showSearchBar ? <FaXmark size={18} /> : <FaSearch size={18} />}
             </button>
           </div>
         </div>
@@ -112,17 +112,17 @@ const Header = () => {
                   emptyInput(e);
                 }} 
                 type="reset" 
-                className="text-white hover-glow p-1"
+                className="glass text-white hover-glow p-2 rounded-full btn-animate"
               >
-                <FaXmark />
+                <FaXmark size={14} />
               </button>
             )}
             <button 
               type="submit" 
-              className="text-white hover-glow p-1"
+              className="sleek-btn text-white hover-glow p-2 btn-animate"
               onClick={playClickSound}
             >
-              <FaSearch />
+              <FaSearch size={14} />
             </button>
           </div>
         </form>

@@ -4,6 +4,7 @@ import {
   TbPlayerTrackPrevFilled,
   TbPlayerTrackNextFilled,
 } from "react-icons/tb";
+import { useClickSound } from "../utils/clickSound";
 
 const Player = ({
   episodeId,
@@ -14,6 +15,7 @@ const Player = ({
 }) => {
   const [category, setCategory] = useState("sub");
   const [server, setServer] = useState("vidWish");
+  const { play: playClickSound } = useClickSound();
 
   const changeCategory = (newType) => {
     if (newType !== category) {
@@ -37,26 +39,32 @@ const Player = ({
         ></iframe>
       </div>
       <div className="category flex flex-wrap flex-col sm:flex-row items-center justify-center  sm:justify-between px-2 md:px-20 gap-3 bg-lightbg py-2">
-        <div className="servers flex gap-4">
+        <div className="servers flex gap-3">
           <button
-            onClick={() => changeServer("vidWish")}
+            onClick={() => {
+              playClickSound();
+              changeServer("vidWish");
+            }}
             className={`${
               server === "vidWish"
-                ? "bg-primary text-black"
-                : "bg-btnbg  text-white"
-            } px-2 py-1 rounded text-sm font-semibold`}
+                ? "sleek-btn bg-white/20 text-white"
+                : "glass text-white/80 hover:text-white"
+            } px-4 py-2 rounded-full text-sm font-medium transition-all duration-300`}
           >
-            vidwish
+            VidWish
           </button>
           <button
-            onClick={() => changeServer("megaPlay")}
+            onClick={() => {
+              playClickSound();
+              changeServer("megaPlay");
+            }}
             className={`${
               server === "megaPlay"
-                ? "bg-primary text-black"
-                : "bg-btnbg  text-white"
-            } px-2 py-1 rounded text-sm font-semibold`}
+                ? "sleek-btn bg-white/20 text-white"
+                : "glass text-white/80 hover:text-white"
+            } px-4 py-2 rounded-full text-sm font-medium transition-all duration-300`}
           >
-            megaplay
+            MegaPlay
           </button>
         </div>
         <div className="flex gap-5">
@@ -64,34 +72,43 @@ const Player = ({
             {["sub", "dub"].map((type) => (
               <button
                 key={type}
-                onClick={() => changeCategory(type)}
+                onClick={() => {
+                  playClickSound();
+                  changeCategory(type);
+                }}
                 className={`${
                   category === type
-                    ? "bg-primary text-black"
-                    : "bg-btnbg  text-white"
-                } px-2 py-1 rounded text-sm font-semibold`}
+                    ? "sleek-btn bg-white/20 text-white"
+                    : "glass text-white/80 hover:text-white"
+                } px-4 py-2 rounded-full text-sm font-medium transition-all duration-300`}
               >
                 {type.toUpperCase()}
               </button>
             ))}
           </div>
-          <div className="btns flex gap-4">
+          <div className="btns flex gap-3">
             {hasPrevEp && (
               <button
-                title="prev"
-                className="prev bg-primary px-2 py-1 rounded-md text-black"
-                onClick={() => changeEpisode("prev")}
+                title="Previous Episode"
+                className="sleek-btn px-3 py-2 rounded-full text-white hover-scale transition-all duration-300"
+                onClick={() => {
+                  playClickSound();
+                  changeEpisode("prev");
+                }}
               >
-                <TbPlayerTrackPrevFilled />
+                <TbPlayerTrackPrevFilled className="text-lg" />
               </button>
             )}
             {hasNextEp && (
               <button
-                title="next"
-                className="next bg-primary px-2 py-1 rounded-md text-black"
-                onClick={() => changeEpisode("next")}
+                title="Next Episode"
+                className="sleek-btn px-3 py-2 rounded-full text-white hover-scale transition-all duration-300"
+                onClick={() => {
+                  playClickSound();
+                  changeEpisode("next");
+                }}
               >
-                <TbPlayerTrackNextFilled />
+                <TbPlayerTrackNextFilled className="text-lg" />
               </button>
             )}
           </div>

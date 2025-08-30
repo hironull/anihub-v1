@@ -27,14 +27,14 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 .glass-dark {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
 /* Modern Card Design */
@@ -42,7 +42,7 @@
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 24px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
 }
@@ -58,7 +58,7 @@
 .sleek-btn {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  border-radius: 25px;
   color: #ffffff;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -108,7 +108,7 @@ input:focus {
   border-radius: 15px 0 0 15px;
 }
 .btn {
-  border-radius: 0 15px 15px 0;
+  border-radius: 25px;
 }
 
 .flw-item {
@@ -130,9 +130,58 @@ input:focus {
 .modern-container {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 24px;
   backdrop-filter: blur(10px);
+}
+
+/* Performance Optimizations */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.gpu-accelerate {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Enhanced Hover Effects */
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Improved Button Animations */
+.btn-animate {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.btn-animate:active::before {
+  width: 300px;
+  height: 300px;
 }
 .gradient-text {
   font-weight: 700;
@@ -354,6 +403,7 @@ input:focus {
   position: relative;
   background: linear-gradient(45deg, #000000, #333333);
   border: 2px solid #ffffff;
+  border-radius: 25px;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -393,9 +443,9 @@ input:focus {
 .futuristic-input {
   background: transparent;
   border: 2px solid #ffffff;
-  border-radius: 0;
+  border-radius: 25px;
   color: #ffffff;
-  padding: 12px 15px;
+  padding: 12px 20px;
   font-size: 16px;
   transition: all 0.3s ease;
   position: relative;
@@ -404,8 +454,9 @@ input:focus {
 .futuristic-input:focus {
   outline: none;
   border-color: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
 }
 
 .futuristic-input::placeholder {
