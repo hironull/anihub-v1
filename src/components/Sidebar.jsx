@@ -38,39 +38,48 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar transition-all fixed overflow-scroll h-full z-[100] inset-0 w-64 md:w-80 bg-black border-r-2 border-white cyber-grid ${
-        isSidebarOpen ? "translate-x-0 slide-in-left" : "translate-x-[-100%]"
+      className={`sidebar transition-all duration-500 fixed overflow-y-auto h-full z-[100] inset-0 w-72 md:w-80 glass-dark border-r border-white/20 ${
+        isSidebarOpen ? "translate-x-0" : "translate-x-[-100%]"
       }`}
     >
-      <button
-        className="w-full pt-4 pl-2 flex items-center gap-2 hover:text-primary text-base md:text-xl futuristic-btn glow-hover"
-        onClick={() => {
-          playClickSound();
-          sidebarHandler();
-        }}
-      >
-        <FaAngleLeft />
-        <span>CLOSE MENU</span>
-      </button>
-      <ul className="py-4">
-        {list.map((item) => (
-          <li
-            key={item.link}
-            onClick={() => {
-              playClickSound();
-              sidebarHandler();
-            }}
-            className="py-4 pl-4 hover:text-primary text-base md:text-lg border-b border-white w-full hover-glow transition-all duration-300"
-          >
-            <Link to={item.link} className="uppercase tracking-wide">{item.name}</Link>
-          </li>
-        ))}
-        <li className="py-4 pl-2 text-base md:text-lg w-full uppercase tracking-widest border-t border-white">GENRES</li>
-        <Genres
-          event={sidebarHandler}
-          className="w-1/2 my-2 pl-2 hover:opacity-[.7]"
-        />
-      </ul>
+      <div className="p-6 border-b border-white/10">
+        <button
+          className="sleek-btn w-full flex items-center justify-center gap-3 px-4 py-3 text-sm font-medium"
+          onClick={() => {
+            playClickSound();
+            sidebarHandler();
+          }}
+        >
+          <FaAngleLeft />
+          <span>Close Menu</span>
+        </button>
+      </div>
+      <div className="p-4">
+        <h3 className="text-white/40 text-xs uppercase tracking-widest mb-4 font-medium">Navigation</h3>
+        <ul className="space-y-1">
+          {list.map((item) => (
+            <li key={item.link}>
+              <Link
+                to={item.link}
+                onClick={() => {
+                  playClickSound();
+                  sidebarHandler();
+                }}
+                className="glass flex items-center px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-lg group"
+              >
+                <span className="group-hover:translate-x-1 transition-transform duration-200">{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8">
+          <h3 className="text-white/40 text-xs uppercase tracking-widest mb-4 font-medium">Genres</h3>
+          <Genres
+            event={sidebarHandler}
+            className="genre-item"
+          />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 @import "./variables.css";
 
 :root {
-  font-family: "Nunito", sans-serif;
-  line-height: 1.5;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-  color-scheme: light dark;
-  color: #fff;
+  color-scheme: dark;
+  color: #ffffff;
   background-color: var(--background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,12 +14,79 @@
   box-sizing: border-box;
 }
 * {
-  font-family: "Nunito", sans-serif;
-  line-height: 1.5;
-  font-weight: 500;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Modern Glass Morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Modern Card Design */
+.modern-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(255, 255, 255, 0.1);
+}
+
+/* Sleek Button Design */
+.sleek-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sleek-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.sleek-btn:hover::before {
+  left: 100%;
+}
+
+.sleek-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
 }
 .active {
   position: fixed;
@@ -45,21 +112,53 @@ input:focus {
 }
 
 .flw-item {
-  width: calc(16.66% - 0.5rem);
-  margin: 0.7rem 0;
+  width: calc(16.66% - 1rem);
+  margin: 0.5rem;
   position: relative;
 }
+
+/* Modern Anime Card Styles */
+.modern-anime-card {
+  transition: all 0.3s ease;
+}
+
+.modern-anime-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Modern Container */
+.modern-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+}
 .gradient-text {
-  font-weight: 800;
+  font-weight: 700;
   background: linear-gradient(
-    90deg,
-    #ffffff,
-    #cccccc
-  ); /* Black and white gradient */
+    135deg,
+    #ffffff 0%,
+    #e0e0e0 25%,
+    #ffffff 50%,
+    #f0f0f0 75%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-flow 3s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center;
+  letter-spacing: 2px;
+}
+
+@keyframes gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 .active {
   position: fixed;

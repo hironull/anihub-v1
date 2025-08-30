@@ -20,76 +20,85 @@ import { Link } from "react-router-dom";
 const HeroBanner = ({ slides }) => {
   return (
     <Swiper
-      speed={250}
+      speed={800}
       grabCursor={true}
       modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={1}
       loop={true}
-      autoplay={{ delay: 3000 }}
+      autoplay={{ delay: 5000 }}
       pagination={{ clickable: true }}
       navigation={true}
-      className="slider h-[40vh] pt-10 mb-5 sm:h-[40vh] md:h-[50vh] xl:h-[calc(100vh-300px)]"
+      className="slider h-[60vh] pt-16 mb-8 modern-hero-slider"
     >
       {slides &&
         slides.map((item) => (
           <SwiperSlide
             key={item.id}
-            className="relative h-full overflow-hidden bg-backGround"
+            className="relative h-full overflow-hidden bg-black modern-slide"
           >
-            <div className="content w-full h-full">
-              <div className="opacity-layer absolute left-0 md:left-[15%] xl:left-[30%] top-0 right-0 bottom-0 overflow-hidden">
+            <div className="content w-full h-full relative">
+              <div className="hero-backdrop absolute inset-0 overflow-hidden">
                 <img
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-center opacity-30"
                   loading="lazy"
                   alt={item.title}
                   src={item.poster}
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
               </div>
-              <div className=" z-10 ml-2 md:ml-12 min-w-32  md:max-w-2xl absolute bottom-0 sm:bottom-[30px]">
-                <div className="text-primary text-base font-semibold mb-2">
-                  #{item.rank} Spotlight
+              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-8 p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="sleek-btn text-xs px-3 py-1 uppercase tracking-wider">
+                    #{item.rank} Spotlight
+                  </div>
+                  <div className="h-1 w-1 bg-white rounded-full opacity-50"></div>
+                  <div className="text-white/70 text-sm uppercase tracking-wide">
+                    Featured
+                  </div>
                 </div>
-                <div
+                <h1
                   title={item.title}
-                  className=" title text-lg md:text-2xl xl:text-5xl font-bold mb-6 line-clamp-2"
+                  className="text-2xl md:text-4xl xl:text-6xl font-bold mb-6 line-clamp-2 leading-tight"
                 >
                   {item.title}
-                </div>
-                <div className="text-base text-white mb-3 gap-5 hidden md:flex">
-                  <div className="item">
-                    <FaCirclePlay />
+                </h1>
+                <div className="flex flex-wrap gap-4 mb-6 text-white/80 text-sm">
+                  <div className="flex items-center gap-2">
+                    <FaCirclePlay className="text-white" />
                     <span>{item.type}</span>
                   </div>
-                  <div className="item">
-                    <FaClock />
+                  <div className="flex items-center gap-2">
+                    <FaClock className="text-white" />
                     <span>{item.duration}</span>
                   </div>
-                  <div className="item">
-                    <FaCalendarDay />
+                  <div className="flex items-center gap-2">
+                    <FaCalendarDay className="text-white" />
                     <span>{item.aired}</span>
                   </div>
-                  <div className="item bg-primary text-black text-sm font-bold px-2 rounded-sm">
-                    <span className="">{item.quality}</span>
-                  </div>
-                  <div className="item">
-                    <SoundsInfo episodes={item.episodes} />
+                  <div className="glass px-3 py-1 text-xs text-white font-medium uppercase tracking-wide">
+                    {item.quality}
                   </div>
                 </div>
-                <div className="synopsis">{item.synopsis}</div>
-                <div className="desi-buttons z-50 text-sm md:text-base mt-5 flex gap-2">
+                <div className="mb-6">
+                  <SoundsInfo episodes={item.episodes} />
+                </div>
+                <p className="text-white/70 text-sm md:text-base line-clamp-3 mb-8 leading-relaxed">
+                  {item.synopsis}
+                </p>
+                <div className="flex gap-4">
                   <Link
                     to={`/watch/${item.id}`}
-                    className="bg-primary rounded-3xl px-4 py-1 text-black flex justify-center items-center gap-2"
+                    className="sleek-btn px-6 py-3 flex items-center gap-3 text-sm font-medium hover-scale"
                   >
-                    <FaCirclePlay />
+                    <FaCirclePlay className="text-lg" />
                     <span>Watch Now</span>
                   </Link>
                   <Link
                     to={`/anime/${item.id}`}
-                    className="bg-btnbg rounded-3xl  px-4 py-1 flex justify-center items-center gap-2"
+                    className="glass px-6 py-3 flex items-center gap-3 text-sm font-medium border border-white/20 hover:border-white/40 transition-all duration-300"
                   >
-                    <span>Detail</span>
-                    <FaAngleRight />
+                    <span>More Info</span>
+                    <FaAngleRight className="text-sm" />
                   </Link>
                 </div>
               </div>
