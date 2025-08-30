@@ -60,7 +60,7 @@
   line-height: 1.3em;
   font-weight: 400;
   margin-bottom: 20px;
-  color: #ffbade;
+  color: #ffffff;
 }
 .deslide-item .desi-head-title {
   font-size: 3em;
@@ -136,13 +136,13 @@
 }
 .swiper-pagination-bullet {
   opacity: 1;
-  background-color: #ccc;
+  background-color: #666666;
   height: 10px;
   width: 10px;
 }
 .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #ffc107;
+  background: #ffffff;
   margin: 0;
 }
 .item {
@@ -160,7 +160,7 @@
 }
 .swiper-button-prev,
 .swiper-button-next {
-  color: #ccc;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 1299px) {

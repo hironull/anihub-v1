@@ -5,13 +5,13 @@ const Genres = ({ event, className }) => {
   const genres = useGenresStore((state) => state.genres);
 
   const colors = [
-    "#d0e6a5",
-    "#ffbade",
-    "#fc887b",
-    "#ccabda",
-    "#abccd8",
-    "#d8b2ab",
-    "#86e3ce",
+    "#ffffff",
+    "#cccccc",
+    "#999999",
+    "#666666",
+    "#333333",
+    "#000000",
+    "#ffffff",
   ];
 
   return (

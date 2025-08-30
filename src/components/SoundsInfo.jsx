@@ -10,17 +10,17 @@ const SoundsInfo = ({ episodes }) => {
           <span className="text-sm font-extrabold">{episodes.rating}</span>
         </p>
       )}
-      <p className="item bg-yellow text-sm px-1 text-black">
+      <p className="item bg-white text-sm px-1 text-black">
         <FaClosedCaptioning />
         <span className="text-sm font-bold">{episodes.sub}</span>
       </p>
 
-      <p className="item bg-purple px-1 text-[12px] text-black">
+      <p className="item bg-black px-1 text-[12px] text-white border border-white">
         <FaMicrophone />
         <span className="text-sm font-bold">{episodes.dub}</span>
       </p>
 
-      <p className="item px-1 text-black text-sm bg-pink">{episodes.eps}</p>
+      <p className="item px-1 text-white text-sm bg-black border border-white">{episodes.eps}</p>
     </div>
   )
 }

@@ -12,17 +12,17 @@ const InfoLayout = ({ data, showBigPoster }) => {
   // Regular expression to check if the string ends with a number
 
   const colors = [
-    "#d0e6a5",
-    "#ffbade",
-    "#fc887b",
-    "#ccabda",
-    "#abccd8",
-    "#d8b2ab",
-    "#86e3ce",
+    "#ffffff",
+    "#cccccc",
+    "#999999",
+    "#666666",
+    "#333333",
+    "#000000",
+    "#ffffff",
   ];
   return (
     <>
-      <div className="banner min-h-[700px] relative w-full bg-[#262525] pt-10 md:pt-20">
+      <div className="banner min-h-[700px] relative w-full bg-black matrix-bg pt-10 md:pt-20 hologram-effect">
         <div className="backdrop-img bg-backGround w-full h-full absolute top-0 left-0 overflow-hidden opacity-[.1]">
           <img
             src={data.poster}
@@ -35,7 +35,7 @@ const InfoLayout = ({ data, showBigPoster }) => {
         <div className="content max-w-[1200px] w-full mx-auto flex flex-col items-start md:flex-row gap-2 mb-2 relative px-2">
           <div className="left w-full md:w-60 xl:w-80 flex justify-center">
             <div
-              className="posterImg px-5 md:w-full cursor-pointer"
+              className="posterImg px-5 md:w-full cursor-pointer pulse-border hover-scale popup-animation"
               onClick={() => showBigPoster(data.poster)}
             >
               <img
@@ -88,7 +88,7 @@ const InfoLayout = ({ data, showBigPoster }) => {
             {data.id && (
               <div className="watch-btn my-4">
                 <Link to={`/watch/${data.id}`}>
-                  <button className=" flex justify-center items-center gap-2 py-1 rounded-3xl text-lg text-black bg-primary w-1/2 ">
+                  <button className="futuristic-btn flex justify-center items-center gap-2 py-2 text-lg glow-effect hover-scale w-1/2">
                     <FaCirclePlay />
                     <span>Watch Now</span>
                   </button>
@@ -99,8 +99,8 @@ const InfoLayout = ({ data, showBigPoster }) => {
               {data.genres.map((genre, index) => (
                 <Link to={`/animes/genre/${genre.toLowerCase()}`} key={genre}>
                   <p
-                    style={{ background: colors[index % colors.length] }}
-                    className="px-2 border border-black text-black py-0.5 rounded-none "
+                    style={{ background: colors[index % colors.length], color: index % 2 === 0 ? '#000000' : '#ffffff' }}
+                    className="px-2 border border-white text-current py-0.5 rounded-none hover-glow transition-all duration-300"
                   >
                     {genre}
                   </p>
