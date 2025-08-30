@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaAlignJustify, FaHome, FaFilm, FaTv, FaFire, FaRocket } from "react-icons/fa";
+import { FaBars, FaHome, FaFilm, FaTv, FaFire, FaRocket } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useClickSound } from "../utils/clickSound";
 
@@ -14,72 +14,67 @@ const Navbar = () => {
     { name: "Most Popular", id: "/animes/most-popular", icon: FaFire },
     { name: "Top Airing", id: "/animes/top-airing", icon: FaRocket },
   ];
+  
   return (
-    <nav className="cyber-grid">
-      <div className="nav hidden md:flex justify-center items-center py-4">
-        <ul className="flex gap-8">
-          {navLinks.map((item, index) => {
+    <nav className="bg-black/90 backdrop-blur-sm border-b border-white/10">
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex justify-center items-center py-4">
+        <ul className="flex gap-6">
+          {navLinks.map((item) => {
             const IconComponent = item.icon;
             return (
-              <li 
-                className="hover:text-primary font-bold transition-all duration-300" 
-                key={item.id}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <a 
-                  className="futuristic-btn px-4 py-2 flex items-center gap-2 text-center text-sm" 
-                  href={item.id}
+              <li key={item.id}>
+                <Link 
+                  to={item.id}
+                  className="px-4 py-2 flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-lg transition-all duration-200 hover:bg-white/5" 
                   onClick={playClickSound}
                 >
-                  <IconComponent className="text-lg" />
-                  <span>{item.name}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="block md:hidden relative w-full">
-        <button 
-          onClick={() => {
-            playClickSound();
-            setShow(!show);
-          }}
-          className="futuristic-btn m-5 px-4 py-2 glow-hover"
-        >
-          <h1 className="flex justify-center items-center gap-2 text-sm">
-            <FaAlignJustify />
-            MENU
-          </h1>
-        </button>
-        <ul
-          className={`${
-            show ? "flex slide-in-left" : "hidden"
-          } w-11/12 mx-3 absolute flex-col justify-center items-center z-10 bg-background border-2 border-white rounded-md py-5 gap-3 md:gap-10 cyber-grid`}
-        >
-          {navLinks.map((item, index) => {
-            const IconComponent = item.icon;
-            return (
-              <li
-                className="hover:text-primary hover-glow w-full text-center py-2"
-                key={item.id}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <Link 
-                  className="futuristic-btn w-full flex items-center justify-center gap-2 py-2" 
-                  to={item.id}
-                  onClick={() => {
-                    playClickSound();
-                    setShow(false);
-                  }}
-                >
-                  <IconComponent className="text-lg" />
+                  <IconComponent className="text-base" />
                   <span>{item.name}</span>
                 </Link>
               </li>
             );
           })}
         </ul>
+      </div>
+      
+      {/* Mobile Navigation */}
+      <div className="block md:hidden relative">
+        <button 
+          onClick={() => {
+            playClickSound();
+            setShow(!show);
+          }}
+          className="m-4 px-4 py-2 border border-white/20 rounded-lg text-white/80 hover:text-white hover:bg-white/5 transition-all duration-200"
+        >
+          <div className="flex items-center gap-2 text-sm">
+            <FaBars />
+            <span>Menu</span>
+          </div>
+        </button>
+        
+        {show && (
+          <ul className="absolute top-full left-4 right-4 bg-black/95 backdrop-blur-md border border-white/20 rounded-lg py-4 space-y-2 z-50">
+            {navLinks.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <li key={item.id} className="px-4">
+                  <Link 
+                    to={item.id}
+                    className="flex items-center gap-3 py-3 text-white/80 hover:text-white transition-colors duration-200" 
+                    onClick={() => {
+                      playClickSound();
+                      setShow(false);
+                    }}
+                  >
+                    <IconComponent className="text-base" />
+                    <span className="text-sm font-medium">{item.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </nav>
   );

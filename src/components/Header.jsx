@@ -64,25 +64,23 @@ const Header = () => {
   };
   return (
     <div className="relative z-[100]">
-      <div className="fixed bg-black/95 backdrop-blur-md w-full py-3 border-b border-white/20 cyber-grid">
-        <div className="flex gap-3 px-5 md:px-10 md:gap-6 justify-between items-center">
-          <div className="left flex gap-3 md:gap-6 items-center">
+      <div className="fixed bg-black/95 backdrop-blur-sm w-full py-3 border-b border-white/10">
+        <div className="flex gap-4 px-4 md:px-8 justify-between items-center">
+          <div className="flex gap-4 items-center">
             <button 
-              className="menu sleek-btn p-3 rounded-lg hover:bg-white/10 transition-all duration-300"
+              className="p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
               onClick={() => {
                 playClickSound();
                 sidebarHandler();
               }}
             >
-              <FaBars size={20} />
+              <FaBars size={18} />
             </button>
-            <div className="floating-element">
-              <Logo />
-            </div>
+            <Logo />
           </div>
-          <div className="right justify-end lg:basis-[40%] flex gap-3 md:gap-6 items-center">
+          <div className="flex items-center">
             <button
-              className="sleek-btn px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-300"
+              className="p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
               onClick={() => {
                 playClickSound();
                 setShowSearchBar(!showSearchBar);
@@ -92,96 +90,103 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <form
-          action={`/search?keyword=${value}`}
-          onSubmit={handleSubmit}
-          className={`search mt-2 px-4 relative items-center w-full ${
-            showSearchBar ? "flex" : "hidden"
-          }`}
-        >
-          <input
-            value={value}
-            onChange={changeInput}
-            placeholder="SEARCH ANIME"
-            type="text"
-            className="futuristic-input w-full px-4 py-2 text-white bg-transparent border-white"
-          />
-          <div className="btns absolute right-8 flex justify-center items-center gap-3">
-            {value.length > 1 && (
-              <button 
-                onClick={(e) => {
-                  playClickSound();
-                  emptyInput(e);
-                }} 
-                type="reset" 
-                className="glass text-white p-2 rounded-full transition-all duration-300"
-              >
-                <FaXmark size={14} />
-              </button>
-            )}
-            <button 
-              type="submit" 
-              className="sleek-btn text-white p-2 transition-all duration-300"
-              onClick={playClickSound}
-            >
-              <FaSearch size={14} />
-            </button>
-          </div>
-        </form>
-        <div className={`${showSearchBar ? "flex flex-col mt-4" : "hidden"}`}>
-          {isLoading ? (
-            <Loader />
-          ) : data && data?.data.length ? (
-            <>
-              {data?.data?.map((item) => (
-                <div
-                  onClick={() => {
-                    playClickSound();
-                    navigateToAnimePage(item.id);
-                  }}
-                  className="flex w-full justify-start items-start bg-background hover:bg-white/5 px-3 py-5 gap-4 border-b border-white cursor-pointer transition-all duration-300"
-                  key={item.id}
+
+        {/* Search Bar */}
+        {showSearchBar && (
+          <form
+            action={`/search?keyword=${value}`}
+            onSubmit={handleSubmit}
+            className="mt-3 px-4 md:px-8"
+          >
+            <div className="relative">
+              <input
+                value={value}
+                onChange={changeInput}
+                placeholder="Search anime..."
+                type="text"
+                className="w-full px-4 py-3 bg-black/60 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40"
+              />
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                {value.length > 1 && (
+                  <button 
+                    onClick={(e) => {
+                      playClickSound();
+                      emptyInput(e);
+                    }} 
+                    type="reset" 
+                    className="p-1 text-white/60 hover:text-white transition-colors"
+                  >
+                    <FaXmark size={14} />
+                  </button>
+                )}
+                <button 
+                  type="submit" 
+                  className="p-1 text-white/60 hover:text-white transition-colors"
+                  onClick={playClickSound}
                 >
-                  <div className="poster shrink-0 pb-14 relative w-10">
-                    <img
-                      className="h-full w-full inset-0 absolute object-cover object-center"
-                      src={item.poster}
-                      alt={item.title}
-                    />
-                  </div>
-                  <div className="info">
-                    <h4 className="title line-clamp-2">{item.title}</h4>
-                    <h6 className="gray text-sm line-clamp-1">
-                      {item.alternativeTitle}
-                    </h6>
-                    <div className="flex items-center gap-2 text-sm gray">
-                      <h6>{item.aired}</h6>
-                      <span className="h-1 w-1 rounded-full bg-primary"></span>
-                      <h6>{item.type}</h6>
-                      <span className="h-1 w-1 rounded-full bg-primary"></span>
-                      <h6>{item.duration}</h6>
+                  <FaSearch size={14} />
+                </button>
+              </div>
+            </div>
+          </form>
+        )}
+
+        {/* Search Results */}
+        {showSearchBar && (
+          <div className="mt-3 px-4 md:px-8">
+            {isLoading ? (
+              <div className="py-4">
+                <Loader />
+              </div>
+            ) : data && data?.data.length ? (
+              <div className="bg-black/60 border border-white/10 rounded-lg overflow-hidden">
+                {data?.data?.map((item) => (
+                  <div
+                    onClick={() => {
+                      playClickSound();
+                      navigateToAnimePage(item.id);
+                    }}
+                    className="flex items-start p-3 hover:bg-white/5 border-b border-white/10 last:border-b-0 cursor-pointer transition-colors"
+                    key={item.id}
+                  >
+                    <div className="flex-shrink-0 w-12 h-16 mr-3">
+                      <img
+                        className="w-full h-full object-cover rounded"
+                        src={item.poster}
+                        alt={item.title}
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-white text-sm font-medium line-clamp-2 mb-1">{item.title}</h4>
+                      <p className="text-white/60 text-xs line-clamp-1 mb-1">
+                        {item.alternativeTitle}
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-white/40">
+                        <span>{item.aired}</span>
+                        <span>•</span>
+                        <span>{item.type}</span>
+                        <span>•</span>
+                        <span>{item.duration}</span>
+                      </div>
                     </div>
                   </div>
+                ))}
+                <button
+                  className="w-full py-3 bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium"
+                  onClick={handleSubmit}
+                >
+                  View More Results
+                </button>
+              </div>
+            ) : (
+              value.length > 2 && (
+                <div className="py-4 text-center text-white/60">
+                  No anime found :(
                 </div>
-              ))}
-              <button
-                className="py-2 flex justify-center items-center gap-2 bg-primary text-black"
-                onClick={handleSubmit}
-              >
-                <span className="text-lg font-bold">view More</span>
-                <FaArrowCircleRight />
-              </button>
-            </>
-          ) : (
-            <>
-              {value.length > 2 && (
-                <h1 className="text-center text-lg text-primary">
-                  anime not found :(
-                </h1>
-              )}
-            </>
-          )}
-        </div>
+              )
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

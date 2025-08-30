@@ -65,8 +65,7 @@ const WatchPage = () => {
   const hasPrevEp = Boolean(episodes[currentEp.episodeNumber - 1 - 1]);
 
   return (
-    /* WatchPage.js */
-    <div className="bg-backGround pt-14 max-w-screen-xl mx-auto py-2 md:px-2">
+    <div className="min-h-screen bg-black pt-16">
       <Helmet>
         <title>
           Watch {id.split("-").slice(0, 2).join(" ")} Online, Free Anime
@@ -74,66 +73,82 @@ const WatchPage = () => {
         </title>
         <meta property="og:title" content="watch - AniHub" />
       </Helmet>
-      <div className="flex flex-col gap-2">
-        <div className="path flex mb-2 mx-2 items-center gap-2 text-base ">
-          <Link className="" to="/home">
-            <h4 className="hover:text-primary">home</h4>
+      
+      <div className="max-w-7xl mx-auto px-4 pb-8">
+        {/* Breadcrumb Navigation */}
+        <div className="flex items-center gap-2 text-sm text-white/60 mb-6">
+          <Link to="/home" className="hover:text-white transition-colors">
+            Home
           </Link>
-          <span className="h-1 w-1 rounded-full bg-primary"></span>
-          <Link to={`/anime/${id}`}>
-            <h4 className="hover:text-primary">
-              {id.split("-").slice(0, 2).join(" ")}
-            </h4>
+          <span>•</span>
+          <Link to={`/anime/${id}`} className="hover:text-white transition-colors">
+            {id.split("-").slice(0, 2).join(" ")}
           </Link>
-          <span className="h-1 w-1 rounded-full bg-primary"></span>
-          <h4 className="gray">{`episode ${currentEp.episodeNumber}`}</h4>
+          <span>•</span>
+          <span>Episode {currentEp.episodeNumber}</span>
         </div>
+
+        {/* Video Player */}
         {ep && id && (
-          <Player
-            id={id}
-            episodeId={`${id}?ep=${ep}`}
-            currentEp={currentEp}
-            changeEpisode={changeEpisode}
-            hasNextEp={hasNextEp}
-            hasPrevEp={hasPrevEp}
-          />
+          <div className="mb-8">
+            <Player
+              id={id}
+              episodeId={`${id}?ep=${ep}`}
+              currentEp={currentEp}
+              changeEpisode={changeEpisode}
+              hasNextEp={hasNextEp}
+              hasPrevEp={hasPrevEp}
+            />
+          </div>
         )}
-        <div className="input w-full mt-2 flex items-end justify-end gap-3 text-end">
-          <div className="btns bg-btnbg flex mx-2 rounded-child">
-            <button
-              className={`row item p-2 ${
-                layout === "row" ? "bg-primary text-black" : undefined
-              }`}
-              onClick={() => setLayout("row")}
-            >
-              <MdTableRows size={"20px"} />
-            </button>
-            <button
-              className={`column item p-2 ${
-                layout === "column" ? "bg-primary text-black" : undefined
-              }`}
-              onClick={() => setLayout("column")}
-            >
-              <HiMiniViewColumns size={"20px"} />
-            </button>
+
+        {/* Episodes Section */}
+        <div className="bg-black/60 border border-white/10 rounded-lg p-6">
+          {/* Layout Controls */}
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold text-white">Episodes</h3>
+            <div className="flex bg-white/10 rounded-lg overflow-hidden">
+              <button
+                className={`p-2 transition-colors ${
+                  layout === "row" 
+                    ? "bg-white text-black" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                }`}
+                onClick={() => setLayout("row")}
+              >
+                <MdTableRows size={18} />
+              </button>
+              <button
+                className={`p-2 transition-colors ${
+                  layout === "column" 
+                    ? "bg-white text-black" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                }`}
+                onClick={() => setLayout("column")}
+              >
+                <HiMiniViewColumns size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* Episodes Grid */}
+          <div
+            className={`max-h-[50vh] overflow-y-auto grid gap-2 ${
+              layout === "row"
+                ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                : "grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12"
+            }`}
+          >
+            {episodes?.map((episode) => (
+              <Episodes
+                key={episode.id}
+                episode={episode}
+                currentEp={currentEp}
+                layout={layout}
+              />
+            ))}
           </div>
         </div>
-        <ul
-          className={`episodes max-h-[50vh] py-4 px-2 overflow-scroll bg-lightbg grid gap-1  md:gap-2 ${
-            layout === "row"
-              ? " grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-              : " grid-cols-5 md:grid-cols-10"
-          }`}
-        >
-          {episodes?.map((episode) => (
-            <Episodes
-              key={episode.id}
-              episode={episode}
-              currentEp={currentEp}
-              layout={layout}
-            />
-          ))}
-        </ul>
       </div>
     </div>
   );

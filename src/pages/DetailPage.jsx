@@ -38,20 +38,20 @@ const DetailPage = () => {
   }
 
   return (
-    <main className={`${bigPoster ? "h-dvh  overflow-hidden" : ""}`}>
+    <main className={`min-h-screen bg-black ${bigPoster ? "overflow-hidden" : ""}`}>
       {bigPoster && (
-        <div className="bigposter absolute flex justify-center items-center h-full w-full z-[100] bg-[#222831b4]">
-          <div className="poster bg-lightbg rounded-md flex aspect-auto object-cover flex-col items-end relative">
+        <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center">
+          <div className="relative max-w-2xl max-h-[90vh] bg-black border border-white/20 rounded-lg overflow-hidden">
             <button
               onClick={() => setBigPoster(null)}
-              className="absolute hover:text-primary bg-black text-2xl"
+              className="absolute top-4 right-4 z-10 p-2 bg-black/80 text-white hover:text-red-400 rounded-lg transition-colors"
             >
-              <FaWindowClose />
+              <FaWindowClose size={20} />
             </button>
             <img
               src={bigPoster}
               alt="poster"
-              className="rounded-md h-full w-full"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
@@ -61,33 +61,34 @@ const DetailPage = () => {
         <title>{titleId}</title>
         <meta property="og:title" content="detail - AniHub" />
       </Helmet>
+      
       {data && !isLoading ? (
-        <div className={`DetailPage relative pt-10 ${bigPoster && "blur-sm"} `}>
-          <InfoLayout showBigPoster={showBigPoster} data={data} />
+        <div className={`max-w-7xl mx-auto px-4 py-8 ${bigPoster ? "blur-sm" : ""}`}>
+          {/* Main Info Section */}
+          <div className="mb-12">
+            <InfoLayout showBigPoster={showBigPoster} data={data} />
+          </div>
 
-          <div className="row grid items-start gap-3 px-2 grid-cols-12">
-            <div className="left col-span-12 xl:col-span-9">
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+            {/* Main Content */}
+            <div className="xl:col-span-2 space-y-8">
               {data.moreSeasons.length !== 0 && (
                 <MoreSeasons data={data.moreSeasons} />
               )}
               <VoiceActorsLayout id={id} />
               {data.recommended && (
-                <div className="recomendation">
-                  <Recommended data={data.recommended} />
-                </div>
+                <Recommended data={data.recommended} />
               )}
             </div>
 
-            <div className="right col-span-12 xl:col-span-3">
+            {/* Sidebar */}
+            <div className="space-y-6">
               {data.related.length !== 0 && (
-                <div className="related mt-5">
-                  <Related data={data.related} />
-                </div>
+                <Related data={data.related} />
               )}
               {data.mostPopular && (
-                <div className="most-popular col-span-12 mt-2 xl:col-span-3">
-                  <MostPopular data={data.mostPopular} />
-                </div>
+                <MostPopular data={data.mostPopular} />
               )}
             </div>
           </div>

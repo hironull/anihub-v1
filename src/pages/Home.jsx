@@ -35,7 +35,7 @@ const Home = () => {
     return;
   }
   return (
-    <div className="relative">
+    <div className="min-h-screen bg-black">
       <Helmet>
         <title>
           Watch Anime Online, Free Anime Streaming Online on AniHub Anime
@@ -47,61 +47,75 @@ const Home = () => {
         />
         <meta property="og:title" content="home - AniHub" />
       </Helmet>
+      
       {isLoading ? (
         <Loader className="h-[100dvh]" />
       ) : (
-        <>
-          <HeroBanner slides={data?.data?.spotlight} />
-          <div className="xl:mx-10">
-            <TrendingLayout data={data?.data?.trending} />
-            <div className="grid mx-2 grid-cols-12 gap-4 my-5">
-              <DynamicLayout
-                title="Top Airing"
-                endpoint="top-airing"
-                data={data?.data?.topAiring}
-              />
-              <DynamicLayout
-                title="Most Popular"
-                endpoint="most-popular"
-                data={data?.data?.mostPopular}
-              />
-              <DynamicLayout
-                title="Most Favorite"
-                endpoint="most-favorite"
-                data={data?.data?.mostFavorite}
-              />
-              <DynamicLayout
-                title="Latest Completed"
-                endpoint="completed"
-                data={data?.data?.latestCompleted}
-              />
-            </div>
-            <div className="row grid my-10 gap-2 justify-center grid-cols-12 sm:mx-2">
-              <div className="left col-span-12 xl:col-span-9">
-                <MainLayout
-                  title="Latest Episode"
-                  endpoint="recently-updated"
-                  data={data?.data?.latestEpisode}
-                />
-                <MainLayout
-                  title="New Added"
-                  endpoint="recently-added"
-                  data={data?.data?.newAdded}
-                />
-                <MainLayout
-                  title="Top Upcoming"
-                  endpoint="top-upcoming"
-                  data={data?.data?.topUpcoming}
-                />
-              </div>
-              <div className="right col-span-12 xl:col-span-3">
-                <GenresLayout />
-                <Top10Layout />
-              </div>
-            </div>
-            <Footer />
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Hero Section */}
+          <div className="mb-8">
+            <HeroBanner slides={data?.data?.spotlight} />
           </div>
-        </>
+
+          {/* Trending Section */}
+          <div className="mb-12">
+            <TrendingLayout data={data?.data?.trending} />
+          </div>
+
+          {/* Quick Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <DynamicLayout
+              title="Top Airing"
+              endpoint="top-airing"
+              data={data?.data?.topAiring}
+            />
+            <DynamicLayout
+              title="Most Popular"
+              endpoint="most-popular"
+              data={data?.data?.mostPopular}
+            />
+            <DynamicLayout
+              title="Most Favorite"
+              endpoint="most-favorite"
+              data={data?.data?.mostFavorite}
+            />
+            <DynamicLayout
+              title="Latest Completed"
+              endpoint="completed"
+              data={data?.data?.latestCompleted}
+            />
+          </div>
+
+          {/* Main Content Area */}
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12">
+            {/* Main Content */}
+            <div className="xl:col-span-2 space-y-10">
+              <MainLayout
+                title="Latest Episode"
+                endpoint="recently-updated"
+                data={data?.data?.latestEpisode}
+              />
+              <MainLayout
+                title="New Added"
+                endpoint="recently-added"
+                data={data?.data?.newAdded}
+              />
+              <MainLayout
+                title="Top Upcoming"
+                endpoint="top-upcoming"
+                data={data?.data?.topUpcoming}
+              />
+            </div>
+
+            {/* Sidebar */}
+            <div className="space-y-8">
+              <GenresLayout />
+              <Top10Layout />
+            </div>
+          </div>
+
+          <Footer />
+        </div>
       )}
     </div>
   );
