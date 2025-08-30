@@ -821,7 +821,7 @@ input:focus {
 
 /* Gradient Background Utilities */
 .bg-gradient-radial {
-  background: radial-gradient(ellipse at center, var(--first) 0%, var(--second) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, black 100%);
 }
 
 .gradient-border {

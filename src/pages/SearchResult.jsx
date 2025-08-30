@@ -19,7 +19,6 @@ const SearchResult = () => {
     return <PageNotFound />;
   }
   const pages = data?.pages;
-  console.log(data?.pages.length);
 
   return (
     <div className="list-page pt-20">

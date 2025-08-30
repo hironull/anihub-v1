@@ -14,7 +14,6 @@ const VoiceActorsLayout = ({ id }) => {
   if (isError) return null;
   if (!data?.data?.response?.length) return null;
 
-  console.log(data);
   const characters = data && data?.data?.response.slice(0, 6);
 
   return characters ? (
