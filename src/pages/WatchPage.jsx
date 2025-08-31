@@ -54,6 +54,8 @@ const WatchPage = () => {
     episodes.find((e) => e.id.split("ep=").pop() === ep);
 
   const changeEpisode = (action) => {
+    if (!currentEp) return;
+    
     if (action === "next") {
       const nextEp = episodes[currentEp.episodeNumber - 1 + 1];
       if (!nextEp) return;
@@ -65,8 +67,8 @@ const WatchPage = () => {
     }
   };
 
-  const hasNextEp = Boolean(episodes[currentEp.episodeNumber - 1 + 1]);
-  const hasPrevEp = Boolean(episodes[currentEp.episodeNumber - 1 - 1]);
+  const hasNextEp = currentEp ? Boolean(episodes[currentEp.episodeNumber - 1 + 1]) : false;
+  const hasPrevEp = currentEp ? Boolean(episodes[currentEp.episodeNumber - 1 - 1]) : false;
 
   return (
     <div className="min-h-screen bg-black pt-16 pb-safe-area-bottom">
@@ -89,7 +91,7 @@ const WatchPage = () => {
             {id.split("-").slice(0, 2).join(" ")}
           </Link>
           <span>•</span>
-          <span>Episode {currentEp.episodeNumber}</span>
+          <span>Episode {currentEp?.episodeNumber || ep}</span>
         </div>
 
         {/* Video Player */}
@@ -244,12 +246,12 @@ const WatchPage = () => {
                     Progress
                   </h5>
                   <div className="text-white/70 text-sm">
-                    Episode {currentEp?.episodeNumber} of {episodes?.length}
+                    Episode {currentEp?.episodeNumber || ep} of {episodes?.length}
                   </div>
                   <div className="w-full bg-white/10 rounded-full h-2 mt-2">
                     <div 
                       className="bg-gradient-to-r from-white to-gray-300 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${((currentEp?.episodeNumber || 0) / (episodes?.length || 1)) * 100}%` }}
+                      style={{ width: `${((currentEp?.episodeNumber || parseInt(ep) || 0) / (episodes?.length || 1)) * 100}%` }}
                     ></div>
                   </div>
                 </div>
@@ -270,7 +272,7 @@ const WatchPage = () => {
                     </div>
                     <div className="flex justify-between">
                       <span>Current:</span>
-                      <span className="text-white">Episode {currentEp?.episodeNumber}</span>
+                      <span className="text-white">Episode {currentEp?.episodeNumber || ep}</span>
                     </div>
                   </div>
                 </div>
