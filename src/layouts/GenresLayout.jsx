@@ -2,7 +2,8 @@
 import React from "react";
 import Genres from "../components/Genres";
 import Heading from "../components/Heading";
-import { FaTags, FaSparkles } from "react-icons/fa";
+import { FaTags } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi";
 
 const GenresLayout = () => {
   return (
@@ -25,7 +26,7 @@ const GenresLayout = () => {
                 
                 {/* Floating sparkle */}
                 <div className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200">
-                  <FaSparkles className="text-yellow-400 text-xs animate-bounce" />
+                  <HiSparkles className="text-yellow-400 text-xs animate-bounce" />
                 </div>
               </div>
               
