@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { FaFire } from "react-icons/fa";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,7 +15,10 @@ const TrendingLayout = ({ data }) => {
   return (
     <div className="trending mt-6">
       <div className="flex items-center justify-between mb-6">
-        <Heading className="text-xl font-bold">🔥 Trending Now</Heading>
+        <Heading className="text-xl font-bold flex items-center gap-2">
+          <FaFire className="text-orange-500" />
+          Trending Now
+        </Heading>
         <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
       </div>
       <Swiper
