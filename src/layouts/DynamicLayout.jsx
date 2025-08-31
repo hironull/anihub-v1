@@ -9,7 +9,7 @@ const DynamicLayout = ({ title, data, endpoint }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div className="col-span-1 md:col-span-1 group">
+    <div className="group">
       <div className="flex items-center gap-2 mb-3">
         <Heading className="text-sm md:text-base lg:text-lg font-bold">{title}</Heading>
         <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
