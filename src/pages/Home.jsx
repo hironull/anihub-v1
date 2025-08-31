@@ -30,10 +30,11 @@ const Home = () => {
     }
   }, [data]);
 
-  if (isError) {
-    notify("error", error.message);
-    return;
-  }
+  useEffect(() => {
+    if (isError && error) {
+      notify("error", error.message);
+    }
+  }, [isError, error]);
   return (
     <div className="min-h-screen bg-black">
       <Helmet>
