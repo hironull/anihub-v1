@@ -57,19 +57,19 @@ const Home = () => {
       {isLoading ? (
         <Loader className="h-[100dvh]" />
       ) : (
-        <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           {/* Hero Section */}
-          <div className="mb-12">
+          <div className="mb-8 md:mb-12">
             <HeroBanner slides={data?.data?.spotlight} />
           </div>
 
           {/* Trending Section */}
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <TrendingLayout data={data?.data?.trending} />
           </div>
 
           {/* Quick Categories Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-16">
             <DynamicLayout
               title="Top Airing"
               endpoint="top-airing"
@@ -93,9 +93,9 @@ const Home = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 mb-16">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 md:gap-12 mb-10 md:mb-16">
             {/* Main Content */}
-            <div className="xl:col-span-2 space-y-12">
+            <div className="xl:col-span-2 space-y-8 md:space-y-12">
               <MainLayout
                 title="Latest Episode"
                 endpoint="recently-updated"
@@ -114,7 +114,7 @@ const Home = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-10">
+            <div className="space-y-6 md:space-y-10">
               <GenresLayout />
               <Top10Layout />
             </div>

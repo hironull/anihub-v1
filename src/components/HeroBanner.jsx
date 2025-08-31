@@ -42,7 +42,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider h-[60vh] md:h-[70vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
+      className="slider min-h-[80vh] md:min-h-[85vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
     >
       {slides &&
         slides.map((item, index) => (
@@ -63,7 +63,7 @@ const HeroBanner = ({ slides }) => {
               </div>
 
               {/* Content Container */}
-              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-8 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20">
+              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-6 md:bottom-8 p-4 md:p-6 lg:p-8 rounded-2xl backdrop-blur-lg border border-white/20 bg-black/40">
                 {/* Header Section */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="sleek-btn text-xs px-3 py-1 uppercase tracking-wider">
@@ -78,13 +78,13 @@ const HeroBanner = ({ slides }) => {
                 {/* Title */}
                 <h1
                   title={item.title}
-                  className="text-2xl md:text-4xl xl:text-6xl font-bold mb-6 line-clamp-2 leading-tight"
+                  className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 line-clamp-2 leading-tight text-white"
                 >
                   {item.title}
                 </h1>
 
                 {/* Meta Information */}
-                <div className="flex flex-wrap gap-4 mb-6 text-white/80 text-sm">
+                <div className="flex flex-wrap gap-3 md:gap-4 mb-4 md:mb-6 text-white/80 text-xs md:text-sm">
                   <div className="flex items-center gap-2">
                     <FaCirclePlay className="text-white" />
                     <span>{item.type}</span>
@@ -108,22 +108,24 @@ const HeroBanner = ({ slides }) => {
                 </div>
 
                 {/* Synopsis */}
-                <p className="text-white/70 text-sm md:text-base line-clamp-3 mb-8 leading-relaxed">
+                <p className="text-white/70 text-xs md:text-sm lg:text-base line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 lg:mb-8 leading-relaxed">
                   {item.synopsis}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                   <Link
                     to={`/watch/${item.id}/1`}
-                    className="sleek-btn px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="sleek-btn px-4 md:px-6 py-2 md:py-3 flex items-center justify-center gap-2 text-sm md:text-base font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    data-testid="button-watch-now"
                   >
                     <FaCirclePlay className="text-lg" />
                     <span>Watch Now</span>
                   </Link>
                   <Link
                     to={`/anime/${item.id}`}
-                    className="glass px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium border border-white/20 hover:border-white/40 hover:bg-white/10 rounded-lg transition-all duration-300"
+                    className="glass px-4 md:px-6 py-2 md:py-3 flex items-center justify-center gap-2 text-sm md:text-base font-medium border border-white/20 hover:border-white/40 hover:bg-white/10 rounded-lg transition-all duration-300"
+                    data-testid="button-more-info"
                   >
                     <span>More Info</span>
                     <FaAngleRight className="text-sm" />

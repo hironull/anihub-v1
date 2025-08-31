@@ -7,11 +7,12 @@ const Image = ({ data }) => {
   const { play: playClickSound } = useClickSound();
 
   return (
-    <div className="group relative transform hover:-translate-y-2 transition-all duration-300">
+    <div className="group relative transform hover:-translate-y-1 transition-all duration-300">
       <Link
         to={`/anime/${data.id}`}
         onClick={playClickSound}
-        className="block w-full h-0 pb-[135%] relative overflow-hidden rounded-xl border border-white/10 hover:border-white/30 hover:shadow-2xl hover:shadow-black/60 transition-all duration-300"
+        className="block w-full h-0 pb-[140%] relative overflow-hidden rounded-lg md:rounded-xl border border-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-black/50 transition-all duration-300"
+        data-testid={`link-anime-${data.id}`}
       >
         <img
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -25,21 +26,21 @@ const Image = ({ data }) => {
 
         {/* Play Button */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
-            <FaPlay className="text-white text-xl ml-1" />
+          <div className="w-12 md:w-16 h-12 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+            <FaPlay className="text-white text-sm md:text-xl ml-1" />
           </div>
         </div>
 
         {/* Episode Badge */}
         {data.episodeNumber && (
-          <div className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-blue-500 px-3 py-1 rounded-full text-white text-xs font-bold shadow-lg backdrop-blur-sm">
+          <div className="absolute top-2 right-2 bg-gradient-to-r from-green-500 to-blue-500 px-2 py-0.5 rounded-full text-white text-[10px] md:text-xs font-bold shadow-lg backdrop-blur-sm">
             EP {data.episodeNumber}
           </div>
         )}
 
         {/* Type Badge */}
         {data.subType && (
-          <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-bold border border-white/20">
+          <div className="absolute top-2 left-2 bg-black/80 backdrop-blur-sm px-2 py-0.5 rounded-full text-white text-[10px] md:text-xs font-bold border border-white/20">
             {data.subType}
           </div>
         )}
@@ -61,36 +62,28 @@ const Image = ({ data }) => {
       </Link>
 
       {/* Title Section */}
-      <div className="mt-3 space-y-2">
+      <div className="mt-2 space-y-1">
         <h3 
           title={data.title}
-          className="text-white text-sm font-semibold line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors duration-300"
+          className="text-white text-xs md:text-sm font-semibold line-clamp-2 leading-tight group-hover:text-blue-400 transition-colors duration-300"
+          data-testid={`text-title-${data.id}`}
         >
           {data.title}
         </h3>
 
-        {/* Meta Info */}
-        <div className="flex items-center justify-between text-xs text-white/60">
+        {/* Meta Info - Only show on hover for mobile */}
+        <div className="hidden md:flex items-center justify-between text-[10px] md:text-xs text-white/60">
           <span className="flex items-center gap-1">
             {data.type && (
-              <span className="bg-white/10 px-2 py-1 rounded-md">
+              <span className="bg-white/10 px-1.5 py-0.5 rounded text-[9px] md:text-[10px]">
                 {data.type}
               </span>
             )}
           </span>
           {data.year && (
-            <span className="text-white/50">
+            <span className="text-white/50 text-[9px] md:text-[10px]">
               {data.year}
             </span>
-          )}
-        </div>
-
-        {/* Additional Info on Hover */}
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-white/50">
-          {data.alternativeTitle && (
-            <p className="line-clamp-1 italic">
-              {data.alternativeTitle}
-            </p>
           )}
         </div>
       </div>

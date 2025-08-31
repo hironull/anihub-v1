@@ -13,9 +13,9 @@ const TrendingLayout = ({ data }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div className="trending mt-6">
-      <div className="flex items-center justify-between mb-6">
-        <Heading className="text-xl font-bold flex items-center gap-2">
+    <div className="trending mt-4 md:mt-6">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
+        <Heading className="text-lg md:text-xl font-bold flex items-center gap-2">
           <FaFire className="text-orange-500" />
           Trending Now
         </Heading>
@@ -24,23 +24,25 @@ const TrendingLayout = ({ data }) => {
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={20}
+        spaceBetween={16}
         breakpoints={{
-          0: { slidesPerView: 3 },
-          640: { slidesPerView: 4 },
-          1024: { slidesPerView: 6 },
-          1320: { slidesPerView: 8 },
+          0: { slidesPerView: 4 },
+          480: { slidesPerView: 5 },
+          640: { slidesPerView: 6 },
+          1024: { slidesPerView: 8 },
+          1320: { slidesPerView: 10 },
         }}
         className="trending-swiper"
       >
         {data &&
           data.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="group relative transform hover:-translate-y-1 transition-all duration-300">
+              <div className="group relative transform hover:-translate-y-1 transition-all duration-300" data-testid={`card-trending-${item.id}`}>
                 <Link
                   to={`/anime/${item.id}`}
                   onClick={playClickSound}
-                  className="block w-full h-0 pb-[135%] relative overflow-hidden rounded-xl border border-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-black/50 transition-all duration-300"
+                  className="block w-full h-0 pb-[140%] relative overflow-hidden rounded-lg md:rounded-xl border border-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-black/50 transition-all duration-300"
+                  data-testid={`link-trending-${item.id}`}
                 >
                   <img
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -49,13 +51,14 @@ const TrendingLayout = ({ data }) => {
                     alt={item.title}
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                  <div className="absolute top-2 left-2 bg-gradient-to-r from-blue-600 to-purple-600 px-2 py-1 rounded-lg text-white text-[10px] font-bold shadow-lg">
+                  <div className="absolute top-1.5 left-1.5 bg-gradient-to-r from-blue-600 to-purple-600 px-1.5 py-0.5 rounded text-white text-[9px] md:text-[10px] font-bold shadow-lg">
                     #{item.rank}
                   </div>
                 </Link>
                 <h3
                   title={item.title}
-                  className="text-xs font-semibold text-center mt-3 line-clamp-2 leading-tight text-white/90 group-hover:text-white transition-colors duration-300"
+                  className="text-[10px] md:text-xs font-semibold text-center mt-2 line-clamp-2 leading-tight text-white/90 group-hover:text-white transition-colors duration-300"
+                  data-testid={`text-trending-title-${item.id}`}
                 >
                   {item.title}
                 </h3>
