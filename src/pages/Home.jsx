@@ -36,7 +36,7 @@ const Home = () => {
     }
   }, [isError, error]);
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black pt-16 md:pt-20">
       <Helmet>
         <title>
           Watch Anime Online, Free Anime Streaming Online on AniHub Anime
@@ -52,7 +52,7 @@ const Home = () => {
       {isLoading ? (
         <Loader className="h-[100dvh]" />
       ) : (
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-3 md:px-4">
           {/* Hero Section */}
           <div className="mb-8">
             <HeroBanner slides={data?.data?.spotlight} />

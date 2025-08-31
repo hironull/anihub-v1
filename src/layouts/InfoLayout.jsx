@@ -8,6 +8,12 @@ import CircleRatting from "../components/CircleRatting";
 
 const InfoLayout = ({ data, showBigPoster }) => {
   const [showFull, setShowFull] = useState(false);
+  
+  // Colors for producer styling
+  const colors = [
+    "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7", 
+    "#DDA0DD", "#98D8E8", "#F7DC6F", "#BB8FCE", "#85C1E9"
+  ];
   return (
     <>
       <div className="banner min-h-[700px] relative w-full bg-black matrix-bg pt-10 md:pt-20 hologram-effect">

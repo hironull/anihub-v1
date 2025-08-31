@@ -38,17 +38,19 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar transition-all duration-500 fixed overflow-y-auto h-full z-[100] inset-0 w-72 md:w-80 glass-dark border-r border-white/20 ${
+      className={`sidebar transition-all duration-500 fixed overflow-y-auto h-full z-[100] inset-0 w-72 md:w-80 glass-dark border-r border-white/20 safe-area-top safe-area-bottom ${
         isSidebarOpen ? "translate-x-0" : "translate-x-[-100%]"
       }`}
+      style={{ WebkitOverflowScrolling: 'touch' }}
     >
       <div className="p-6 border-b border-white/10">
         <button
-          className="sleek-btn w-full flex items-center justify-center gap-3 px-4 py-3 text-sm font-medium"
+          className="sleek-btn w-full flex items-center justify-center gap-3 px-4 py-3 text-sm font-medium min-h-[44px]"
           onClick={() => {
             playClickSound();
             sidebarHandler();
           }}
+          aria-label="Close menu"
         >
           <FaAngleLeft />
           <span>Close Menu</span>
@@ -67,7 +69,7 @@ const Sidebar = () => {
                     playClickSound();
                     sidebarHandler();
                   }}
-                  className="glass-dark flex items-center px-5 py-4 text-base font-medium text-white/80 hover:text-white hover:bg-white/15 transition-all duration-300 rounded-xl group magnetic-hover border border-white/10 hover:border-white/30 popup-animation"
+                  className="glass-dark flex items-center px-5 py-4 text-base font-medium text-white/80 hover:text-white hover:bg-white/15 transition-all duration-300 rounded-xl group magnetic-hover border border-white/10 hover:border-white/30 popup-animation min-h-[44px]"
                 >
                   <IconComponent className="mr-4 text-lg group-hover:scale-110 transition-transform duration-300" />
                   <span className="group-hover:translate-x-1 transition-transform duration-300">{item.name}</span>

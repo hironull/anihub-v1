@@ -64,15 +64,16 @@ const Header = () => {
   };
   return (
     <div className="relative z-[100]">
-      <div className="fixed bg-black/95 backdrop-blur-sm w-full py-3 border-b border-white/10">
-        <div className="flex gap-4 px-4 md:px-8 justify-between items-center">
+      <div className="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-sm w-full py-3 border-b border-white/10 safe-area-top">
+        <div className="flex gap-2 md:gap-4 px-3 md:px-8 justify-between items-center min-h-[44px]">
           <div className="flex gap-4 items-center">
             <button 
-              className="p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
+              className="p-2 md:p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => {
                 playClickSound();
                 sidebarHandler();
               }}
+              aria-label="Open menu"
             >
               <FaBars size={18} />
             </button>
@@ -80,11 +81,12 @@ const Header = () => {
           </div>
           <div className="flex items-center">
             <button
-              className="p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
+              className="p-2 md:p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => {
                 playClickSound();
                 setShowSearchBar(!showSearchBar);
               }}
+              aria-label={showSearchBar ? "Close search" : "Open search"}
             >
               {showSearchBar ? <FaXmark size={18} /> : <FaSearch size={18} />}
             </button>
@@ -104,7 +106,8 @@ const Header = () => {
                 onChange={changeInput}
                 placeholder="Search anime..."
                 type="text"
-                className="w-full px-4 py-3 bg-black/60 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40"
+                className="w-full px-4 py-3 bg-black/60 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 text-base"
+                style={{ fontSize: '16px' }} // Prevent zoom on iOS
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
                 {value.length > 1 && (
@@ -133,7 +136,7 @@ const Header = () => {
 
         {/* Search Results */}
         {showSearchBar && (
-          <div className="mt-3 px-4 md:px-8">
+          <div className="mt-3 px-3 md:px-8">
             {isLoading ? (
               <div className="py-4">
                 <Loader />

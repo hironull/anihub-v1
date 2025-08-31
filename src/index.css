@@ -22,6 +22,38 @@
   padding: 0;
 }
 
+/* Mobile-first improvements */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Improve touch targets for mobile */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Better text rendering on mobile */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+  }
+}
+
 /* Simple Glass Effect */
 .glass {
   background: var(--gradient-glass);
@@ -79,12 +111,16 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
   border-color: rgba(255, 255, 255, 0.4);
 }
-.active {
+.opacityBg.active {
   position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   inset: 0;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  pointer-events: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 input {
@@ -187,17 +223,97 @@ input:focus {
   -webkit-text-fill-color: transparent;
   letter-spacing: 1px;
 }
-.active {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 5000;
-}
 .bg-active {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
+  /* Remove fixed positioning to allow scrolling */
+  position: relative;
+}
+
+/* Safe area support for mobile devices */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Fixed header spacing */
+.header-spacing {
+  padding-top: 4rem; /* 64px */
+}
+
+@media screen and (min-width: 768px) {
+  .header-spacing {
+    padding-top: 5rem; /* 80px */
+  }
+}
+
+/* Mobile-specific improvements */
+@media screen and (max-width: 768px) {
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  
+  .header-spacing {
+    padding-top: 4rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Better mobile spacing */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 2rem;
+  }
+  
+  /* Better mobile padding for cards */
+  .modern-card {
+    padding: 1rem;
+  }
+  
+  .glass, .glass-dark {
+    padding: 1rem;
+  }
+  
+  /* Improved mobile typography */
+  .text-sm {
+    font-size: 0.9rem;
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  .text-4xl {
+    font-size: 2.25rem;
+  }
 }
 .sidebar {
   scrollbar-width: none;
