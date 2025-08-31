@@ -34,6 +34,9 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   position: relative;
+  /* Ensure scrolling works on all mobile devices */
+  -webkit-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Improve touch targets for mobile */
@@ -257,6 +260,23 @@ input:focus {
   
   .header-spacing {
     padding-top: 4rem;
+  }
+  
+  /* Ensure all containers allow scrolling */
+  body, html {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix any potential overflow issues on mobile */
+  main {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* Improve touch scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
   
   .container {

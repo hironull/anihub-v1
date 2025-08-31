@@ -38,7 +38,7 @@ const DetailPage = () => {
   }
 
   return (
-    <main className={`min-h-screen bg-black ${bigPoster ? "overflow-hidden" : ""}`}>
+    <main className={`min-h-screen bg-black ${bigPoster ? "overflow-y-hidden" : ""}`}>
       {bigPoster && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center">
           <div className="relative max-w-2xl max-h-[90vh] bg-black border border-white/20 rounded-lg overflow-hidden">

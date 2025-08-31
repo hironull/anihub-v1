@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const PageNotFound = () => {
   return (
-    <div className="h-[100dvh] flex justify-center flex-col items-center relative overflow-hidden cyber-grid">
+    <div className="min-h-[100dvh] flex justify-center flex-col items-center relative overflow-x-hidden cyber-grid">
       <Helmet>
         <title>404 PAGE NOT FOUND</title>
         <meta property="og:title" content="PAGE NOT FOUND - watanuki" />

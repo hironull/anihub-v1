@@ -27,7 +27,7 @@ const Root = () => {
     navigate(`/search?keyword=${value}`);
   };
   return (
-    <div className="h-[100dvh] bg-black overflow-hidden relative">
+    <div className="min-h-[100dvh] bg-black relative overflow-x-hidden">
       {/* Simplified Background */}
       <div className="absolute inset-0 cyber-grid opacity-30"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
@@ -36,7 +36,7 @@ const Root = () => {
         <Navbar />
         
         {/* Main Content Container */}
-        <div className="flex flex-col items-center justify-center h-full px-4 md:px-8">
+        <div className="flex flex-col items-center justify-center min-h-[calc(100dvh-80px)] px-4 md:px-8 py-8">
           {/* Logo Section */}
           <div className={`text-center mb-8 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="mb-6">
