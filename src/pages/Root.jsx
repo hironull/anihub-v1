@@ -1,6 +1,5 @@
-import { FaSearch, FaPlay, FaStar, FaHeart } from "react-icons/fa";
+import { FaSearch, FaPlay, FaStar, FaHeart, FaClock } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
-import { FaSparkles } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -105,7 +104,7 @@ const Root = () => {
             
             <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 text-center group hover:bg-white/10 transition-all duration-300">
               <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <FaSparkles className="text-white text-lg" />
+                <FaClock className="text-white text-lg" />
               </div>
               <h3 className="text-white text-lg font-semibold mb-2">Latest Episodes</h3>
               <p className="text-gray-400 text-sm">Updated daily with new content</p>
