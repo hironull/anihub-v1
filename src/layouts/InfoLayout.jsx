@@ -8,7 +8,7 @@ import CircleRatting from "../components/CircleRatting";
 
 const InfoLayout = ({ data, showBigPoster }) => {
   const [showFull, setShowFull] = useState(false);
-  
+
   // Colors for producer styling
   const colors = [
     "#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7", 
