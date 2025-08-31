@@ -189,27 +189,33 @@ const WatchPage = () => {
                     : "grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12"
                 }`}
               >
-                {episodes
-                  ?.filter((episode) => {
-                    // Apply search filter
-                    const matchesSearch = episode.title.toLowerCase().includes(episodeSearch.toLowerCase()) ||
-                                        episode.episodeNumber.toString().includes(episodeSearch);
-                    
-                    // Apply type filter
-                    const matchesFilter = episodeFilter === "all" ||
-                                        (episodeFilter === "filler" && episode.isFiller) ||
-                                        (episodeFilter === "canon" && !episode.isFiller);
-                    
-                    return matchesSearch && matchesFilter;
-                  })
-                  ?.map((episode) => (
-                    <Episodes
-                      key={episode.id}
-                      episode={episode}
-                      currentEp={currentEp}
-                      layout={layout}
-                    />
-                  ))}
+                {episodes && Array.isArray(episodes) && episodes.length > 0 ? (
+                  episodes
+                    .filter((episode) => {
+                      // Apply search filter
+                      const matchesSearch = episode.title.toLowerCase().includes(episodeSearch.toLowerCase()) ||
+                                          episode.episodeNumber.toString().includes(episodeSearch);
+                      
+                      // Apply type filter
+                      const matchesFilter = episodeFilter === "all" ||
+                                          (episodeFilter === "filler" && episode.isFiller) ||
+                                          (episodeFilter === "canon" && !episode.isFiller);
+                      
+                      return matchesSearch && matchesFilter;
+                    })
+                    .map((episode) => (
+                      <Episodes
+                        key={episode.id}
+                        episode={episode}
+                        currentEp={currentEp}
+                        layout={layout}
+                      />
+                    ))
+                ) : (
+                  <div className="col-span-full text-center text-white/60 py-8">
+                    No episodes available
+                  </div>
+                )}
               </div>
             </div>
           </div>

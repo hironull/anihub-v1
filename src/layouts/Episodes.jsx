@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaPlay, FaCheck } from "react-icons/fa";
 import { MdPlayArrow } from "react-icons/md";
 const Episodes = ({ episode, currentEp, layout }) => {
-  const isCurrent = episode.id === currentEp.id;
+  const isCurrent = currentEp ? episode.id === currentEp.id : false;
   return (
     <>
       {layout === "row" ? (
