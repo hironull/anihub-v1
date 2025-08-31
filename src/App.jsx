@@ -38,6 +38,7 @@ const App = () => {
           <Route path="/animes/:category/:query?" element={<ListPage />} />
           <Route path="/search" element={<SearchResult />} />
           <Route path="/watch/:id" element={<WatchPage />} />
+          <Route path="/watch/:id/:ep" element={<WatchPage />} />
           <Route path="/characters/:id" element={<CharactersPage />} />
           <Route path="/people/:id" element={<PeopleInfoPage />} />
           <Route path="/character/:id" element={<CharacterInfoPage />} />
