@@ -279,6 +279,26 @@ input:focus {
     -webkit-overflow-scrolling: touch;
   }
   
+  /* Mobile typography adjustments for new landing page */
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-7xl {
+    font-size: 3.5rem;
+  }
+  
+  .text-8xl {
+    font-size: 4rem;
+  }
+  
+  /* Mobile grid adjustments */
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+  
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -790,9 +810,49 @@ input:focus {
   filter: brightness(1.2);
 }
 
-/* Gradient Background Utilities */
+/* Enhanced Gradient Effects for Landing Page */
 .bg-gradient-radial {
   background: radial-gradient(ellipse at center, transparent 0%, black 100%);
+}
+
+/* Smooth animations for landing page */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced blur effects */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Improved glass morphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Smooth hover transitions */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  transition: all 0.3s ease;
 }
 
 .gradient-border {
