@@ -25,7 +25,7 @@ import { useState } from "react";
 
 const HeroBanner = ({ slides }) => {
   const [activeSlide, setActiveSlide] = useState(0);
-  
+
   return (
     <Swiper
       speed={800}
@@ -33,11 +33,11 @@ const HeroBanner = ({ slides }) => {
       modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={1}
       loop={true}
-      autoplay={{ 
+      autoplay={{
         delay: 5000,
         disableOnInteraction: false
       }}
-      pagination={{ 
+      pagination={{
         clickable: true
       }}
       navigation={true}
@@ -74,7 +74,7 @@ const HeroBanner = ({ slides }) => {
                     Featured
                   </div>
                 </div>
-                
+
                 {/* Title */}
                 <h1
                   title={item.title}
@@ -82,7 +82,7 @@ const HeroBanner = ({ slides }) => {
                 >
                   {item.title}
                 </h1>
-                
+
                 {/* Meta Information */}
                 <div className="flex flex-wrap gap-4 mb-6 text-white/80 text-sm">
                   <div className="flex items-center gap-2">
@@ -101,29 +101,29 @@ const HeroBanner = ({ slides }) => {
                     {item.quality}
                   </div>
                 </div>
-                
+
                 {/* Episodes Info */}
                 <div className="mb-6">
                   <SoundsInfo episodes={item.episodes} />
                 </div>
-                
+
                 {/* Synopsis */}
                 <p className="text-white/70 text-sm md:text-base line-clamp-3 mb-8 leading-relaxed">
                   {item.synopsis}
                 </p>
-                
+
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Link
-                    to={`/watch/${item.id}`}
-                    className="sleek-btn px-6 py-3 flex items-center justify-center gap-3 text-sm font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    to={`/watch/${item.id}/1`}
+                    className="sleek-btn px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <FaCirclePlay className="text-lg" />
                     <span>Watch Now</span>
                   </Link>
                   <Link
                     to={`/anime/${item.id}`}
-                    className="glass px-6 py-3 flex items-center justify-center gap-3 text-sm font-medium border border-white/20 hover:border-white/40 hover:bg-white/10 rounded-lg transition-all duration-300"
+                    className="glass px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium border border-white/20 hover:border-white/40 hover:bg-white/10 rounded-lg transition-all duration-300"
                   >
                     <span>More Info</span>
                     <FaAngleRight className="text-sm" />
