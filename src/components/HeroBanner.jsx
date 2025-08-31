@@ -26,6 +26,15 @@ import { useState } from "react";
 const HeroBanner = ({ slides }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
+  // Don't render if no slides
+  if (!slides || slides.length === 0) {
+    return (
+      <div className="h-[50vh] md:h-[60vh] pt-16 mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-black flex items-center justify-center">
+        <div className="text-white/50 text-lg">Loading featured content...</div>
+      </div>
+    );
+  }
+
   return (
     <Swiper
       speed={800}
@@ -42,7 +51,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider min-h-[80vh] md:min-h-[85vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
+      className="slider h-[50vh] md:h-[60vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
     >
       {slides &&
         slides.map((item, index) => (
