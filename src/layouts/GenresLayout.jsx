@@ -4,6 +4,7 @@ import Genres from "../components/Genres";
 import Heading from "../components/Heading";
 import { FaTags } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi";
+import { genres } from "../utils/genres";
 
 const GenresLayout = () => {
   return (
