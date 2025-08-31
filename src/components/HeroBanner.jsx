@@ -42,7 +42,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider h-[45vh] md:h-[50vh] pt-16 mb-6 relative overflow-hidden rounded-xl"
+      className="slider h-[55vh] md:h-[65vh] pt-16 mb-6 relative overflow-hidden rounded-xl"
     >
       {slides &&
         slides.map((item, index) => (
@@ -54,16 +54,20 @@ const HeroBanner = ({ slides }) => {
               {/* Backdrop */}
               <div className="hero-backdrop absolute inset-0 overflow-hidden">
                 <img
-                  className="h-full w-full object-cover object-center opacity-30"
+                  className="h-full w-full object-cover object-center opacity-40"
                   loading="lazy"
                   alt={item.title}
                   src={item.poster}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
               </div>
 
               {/* Content Container */}
-              <div className="glass-dark z-10 mx-4 md:mx-8 max-w-xl absolute bottom-4 p-4 md:p-6 rounded-xl backdrop-blur-lg border border-white/20">
+              <div className="glass-dark z-10 mx-4 md:mx-8 max-w-2xl absolute bottom-6 p-5 md:p-7 rounded-xl backdrop-blur-lg border border-white/20 bg-black/20"></div>
                 {/* Header Section */}
                 <div className="flex items-center gap-2 mb-3">
                   <div className="sleek-btn text-xs px-2 py-1 uppercase tracking-wider">
