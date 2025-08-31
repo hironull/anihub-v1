@@ -42,7 +42,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider h-[55vh] md:h-[65vh] pt-16 mb-6 relative overflow-hidden rounded-xl"
+      className="slider h-[60vh] md:h-[70vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
     >
       {slides &&
         slides.map((item, index) => (
@@ -54,27 +54,23 @@ const HeroBanner = ({ slides }) => {
               {/* Backdrop */}
               <div className="hero-backdrop absolute inset-0 overflow-hidden">
                 <img
-                  className="h-full w-full object-cover object-center opacity-40"
+                  className="h-full w-full object-cover object-center opacity-30"
                   loading="lazy"
                   alt={item.title}
                   src={item.poster}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
               </div>
 
               {/* Content Container */}
-              <div className="glass-dark z-10 mx-4 md:mx-8 max-w-2xl absolute bottom-6 p-5 md:p-7 rounded-xl backdrop-blur-lg border border-white/20 bg-black/20"></div>
+              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-8 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20">
                 {/* Header Section */}
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="sleek-btn text-xs px-2 py-1 uppercase tracking-wider">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="sleek-btn text-xs px-3 py-1 uppercase tracking-wider">
                     #{item.rank} Spotlight
                   </div>
                   <div className="h-1 w-1 bg-white rounded-full opacity-50"></div>
-                  <div className="text-white/70 text-xs uppercase tracking-wide">
+                  <div className="text-white/70 text-sm uppercase tracking-wide">
                     Featured
                   </div>
                 </div>
@@ -82,13 +78,13 @@ const HeroBanner = ({ slides }) => {
                 {/* Title */}
                 <h1
                   title={item.title}
-                  className="text-xl md:text-2xl xl:text-3xl font-bold mb-3 line-clamp-2 leading-tight"
+                  className="text-2xl md:text-4xl xl:text-6xl font-bold mb-6 line-clamp-2 leading-tight"
                 >
                   {item.title}
                 </h1>
 
                 {/* Meta Information */}
-                <div className="flex flex-wrap gap-3 mb-4 text-white/80 text-xs">
+                <div className="flex flex-wrap gap-4 mb-6 text-white/80 text-sm">
                   <div className="flex items-center gap-2">
                     <FaCirclePlay className="text-white" />
                     <span>{item.type}</span>
@@ -107,12 +103,12 @@ const HeroBanner = ({ slides }) => {
                 </div>
 
                 {/* Episodes Info */}
-                <div className="mb-3">
+                <div className="mb-6">
                   <SoundsInfo episodes={item.episodes} />
                 </div>
 
                 {/* Synopsis */}
-                <p className="text-white/70 text-xs md:text-sm line-clamp-2 mb-4 leading-relaxed">
+                <p className="text-white/70 text-sm md:text-base line-clamp-3 mb-8 leading-relaxed">
                   {item.synopsis}
                 </p>
 
