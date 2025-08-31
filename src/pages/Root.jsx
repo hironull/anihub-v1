@@ -76,9 +76,14 @@ const Root = () => {
               <FaPlay className="text-lg" />
               <span>Start Watching</span>
             </Link>
-            <button className="px-8 py-4 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105">
-              Learn More
-            </button>
+            <a 
+              href="https://discord.gg/strelix"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 inline-block text-center"
+            >
+              Join Discord
+            </a>
           </div>
         </div>
 
