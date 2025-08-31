@@ -11,14 +11,14 @@ import { FaHeart, FaStar, FaEye, FaClock } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 
 const WatchPage = () => {
-  const { id } = useParams();
+  const { id, ep: pathEp } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [layout, setLayout] = useState("row");
   const [episodeSearch, setEpisodeSearch] = useState("");
   const [episodeFilter, setEpisodeFilter] = useState("all"); // all, watched, unwatched, filler
   const [showAnimeInfo, setShowAnimeInfo] = useState(false);
 
-  const ep = searchParams.get("ep");
+  const ep = searchParams.get("ep") || pathEp;
 
   const { data, isError } = useApi(`/episodes/${id}`);
   const episodes = data?.data;
