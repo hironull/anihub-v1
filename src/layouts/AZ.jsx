@@ -34,22 +34,28 @@ const AZ = ({ selected }) => {
     { title: "Y", link: "/animes/az-list/Y" },
     { title: "Z", link: "/animes/az-list/Z" },
   ];
+  
   return (
-    <div className="list w-full mb-2 px-2 flex gap-2 flex-wrap justify-center items-center">
-      {azList.map((item) => (
-        <Link to={item.link} key={item.title}>
-          <button
-            className={`px-2 py-1 bg-lightbg text-[14px] hover:bg-primary hover:text-black rounded-sm font-bold mb-1 ${
-              selected && selected.toUpperCase() === item.title
-                ? "bg-primary text-black"
-                : ""
-            }`}
-            key={item.title}
-          >
-            {item.title}
-          </button>
-        </Link>
-      ))}
+    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+      <h3 className="text-white font-semibold text-lg mb-4 text-center">Browse Alphabetically</h3>
+      <div className="flex gap-2 flex-wrap justify-center items-center">
+        {azList.map((item) => (
+          <Link to={item.link} key={item.title}>
+            <button
+              className={`min-w-[40px] h-10 text-sm font-bold rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                selected && selected.toUpperCase() === item.title
+                  ? "bg-white text-black shadow-lg"
+                  : "bg-white/10 text-white/80 hover:bg-white/20 hover:text-white border border-white/20 hover:border-white/40"
+              }`}
+            >
+              {item.title}
+            </button>
+          </Link>
+        ))}
+      </div>
+      <p className="text-white/60 text-sm text-center mt-4">
+        Find anime by their first letter or browse all titles
+      </p>
     </div>
   );
 };
