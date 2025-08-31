@@ -115,7 +115,7 @@ const WatchPage = () => {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-xl font-bold text-white">Episodes</h3>
-                  <span className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
                     {episodes?.length || 0} Episodes
                   </span>
                 </div>
@@ -130,7 +130,7 @@ const WatchPage = () => {
                       placeholder="Search..."
                       value={episodeSearch}
                       onChange={(e) => setEpisodeSearch(e.target.value)}
-                      className="bg-white/10 border border-white/20 rounded-lg pl-10 pr-4 py-2 text-white placeholder-white/50 text-sm focus:outline-none focus:border-blue-500 transition-colors w-32 md:w-48"
+                      className="bg-white/10 border border-white/20 rounded-lg pl-10 pr-4 py-2 text-white placeholder-white/50 text-sm focus:outline-none focus:border-white transition-colors w-32 md:w-48"
                       data-testid="input-episode-search"
                     />
                   </div>
@@ -139,7 +139,7 @@ const WatchPage = () => {
                   <select
                     value={episodeFilter}
                     onChange={(e) => setEpisodeFilter(e.target.value)}
-                    className="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                    className="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-white transition-colors"
                     data-testid="select-episode-filter"
                   >
                     <option value="all">All Episodes</option>
@@ -154,7 +154,7 @@ const WatchPage = () => {
                     <button
                       className={`p-2 transition-colors ${
                         layout === "row" 
-                          ? "bg-blue-500 text-white" 
+                          ? "bg-white text-black" 
                           : "text-white/70 hover:text-white hover:bg-white/10"
                       }`}
                       onClick={() => setLayout("row")}
@@ -166,7 +166,7 @@ const WatchPage = () => {
                     <button
                       className={`p-2 transition-colors ${
                         layout === "column" 
-                          ? "bg-blue-500 text-white" 
+                          ? "bg-white text-black" 
                           : "text-white/70 hover:text-white hover:bg-white/10"
                       }`}
                       onClick={() => setLayout("column")}
@@ -218,19 +218,19 @@ const WatchPage = () => {
               <div className="text-center mb-6">
                 <h4 className="text-lg font-bold text-white mb-2">Quick Actions</h4>
                 <div className="grid grid-cols-4 xl:grid-cols-2 gap-2 lg:gap-3">
-                  <button className="bg-red-500/20 hover:bg-red-500/30 text-red-400 p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-favorite">
+                  <button className="bg-white/20 hover:bg-white/30 text-white p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-favorite">
                     <FaHeart className="text-lg" />
                     <span className="text-xs hidden xl:block">Favorite</span>
                   </button>
-                  <button className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-bookmark">
+                  <button className="bg-white/20 hover:bg-white/30 text-white p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-bookmark">
                     <MdBookmark className="text-lg" />
                     <span className="text-xs hidden xl:block">Bookmark</span>
                   </button>
-                  <button className="bg-green-500/20 hover:bg-green-500/30 text-green-400 p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-share">
+                  <button className="bg-white/20 hover:bg-white/30 text-white p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-share">
                     <MdShare className="text-lg" />
                     <span className="text-xs hidden xl:block">Share</span>
                   </button>
-                  <button className="bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-download">
+                  <button className="bg-white/20 hover:bg-white/30 text-white p-2 lg:p-3 rounded-xl transition-all duration-300 flex flex-col items-center gap-1" data-testid="button-download">
                     <MdDownload className="text-lg" />
                     <span className="text-xs hidden xl:block">Download</span>
                   </button>
@@ -240,7 +240,7 @@ const WatchPage = () => {
               <div className="space-y-4">
                 <div className="p-4 bg-white/5 rounded-xl">
                   <h5 className="text-white font-semibold mb-2 flex items-center gap-2">
-                    <FaStar className="text-yellow-500" />
+                    <FaStar className="text-white" />
                     Progress
                   </h5>
                   <div className="text-white/70 text-sm">
@@ -248,7 +248,7 @@ const WatchPage = () => {
                   </div>
                   <div className="w-full bg-white/10 rounded-full h-2 mt-2">
                     <div 
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+                      className="bg-gradient-to-r from-white to-gray-300 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${((currentEp?.episodeNumber || 0) / (episodes?.length || 1)) * 100}%` }}
                     ></div>
                   </div>
@@ -256,7 +256,7 @@ const WatchPage = () => {
                 
                 <div className="p-4 bg-white/5 rounded-xl">
                   <h5 className="text-white font-semibold mb-2 flex items-center gap-2">
-                    <FaClock className="text-blue-500" />
+                    <FaClock className="text-white" />
                     Watch Stats
                   </h5>
                   <div className="space-y-2 text-sm text-white/70">
@@ -266,11 +266,11 @@ const WatchPage = () => {
                     </div>
                     <div className="flex justify-between">
                       <span>Filler Episodes:</span>
-                      <span className="text-red-400">{episodes?.filter(ep => ep.isFiller).length || 0}</span>
+                      <span className="text-white">{episodes?.filter(ep => ep.isFiller).length || 0}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Current:</span>
-                      <span className="text-green-400">Episode {currentEp?.episodeNumber}</span>
+                      <span className="text-white">Episode {currentEp?.episodeNumber}</span>
                     </div>
                   </div>
                 </div>
