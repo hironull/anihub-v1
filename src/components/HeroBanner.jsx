@@ -42,7 +42,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider h-[60vh] pt-16 mb-8 relative overflow-hidden"
+      className="slider h-[60vh] md:h-[70vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
     >
       {slides &&
         slides.map((item, index) => (
@@ -63,7 +63,7 @@ const HeroBanner = ({ slides }) => {
               </div>
 
               {/* Content Container */}
-              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-8 p-6 md:p-8">
+              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-8 p-6 md:p-8 rounded-2xl backdrop-blur-lg border border-white/20">
                 {/* Header Section */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="sleek-btn text-xs px-3 py-1 uppercase tracking-wider">
@@ -113,17 +113,17 @@ const HeroBanner = ({ slides }) => {
                 </p>
                 
                 {/* Action Buttons */}
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     to={`/watch/${item.id}`}
-                    className="sleek-btn px-6 py-3 flex items-center gap-3 text-sm font-medium hover:scale-105 transition-transform duration-300"
+                    className="sleek-btn px-6 py-3 flex items-center justify-center gap-3 text-sm font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <FaCirclePlay className="text-lg" />
                     <span>Watch Now</span>
                   </Link>
                   <Link
                     to={`/anime/${item.id}`}
-                    className="glass px-6 py-3 flex items-center gap-3 text-sm font-medium border border-white/20 hover:border-white/40 transition-all duration-300"
+                    className="glass px-6 py-3 flex items-center justify-center gap-3 text-sm font-medium border border-white/20 hover:border-white/40 hover:bg-white/10 rounded-lg transition-all duration-300"
                   >
                     <span>More Info</span>
                     <FaAngleRight className="text-sm" />

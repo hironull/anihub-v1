@@ -36,7 +36,12 @@ const Home = () => {
     }
   }, [isError, error]);
   return (
-    <div className="min-h-screen bg-black pt-16 md:pt-20">
+    <div className="min-h-screen bg-black pt-16 md:pt-20 relative overflow-x-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-40 left-20 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-60 right-20 w-48 h-48 bg-purple-500/15 rounded-full blur-3xl"></div>
+      </div>
       <Helmet>
         <title>
           Watch Anime Online, Free Anime Streaming Online on AniHub Anime
@@ -52,19 +57,19 @@ const Home = () => {
       {isLoading ? (
         <Loader className="h-[100dvh]" />
       ) : (
-        <div className="max-w-7xl mx-auto px-3 md:px-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-4">
           {/* Hero Section */}
-          <div className="mb-8">
+          <div className="mb-12">
             <HeroBanner slides={data?.data?.spotlight} />
           </div>
 
           {/* Trending Section */}
-          <div className="mb-12">
+          <div className="mb-16">
             <TrendingLayout data={data?.data?.trending} />
           </div>
 
           {/* Quick Categories Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <DynamicLayout
               title="Top Airing"
               endpoint="top-airing"
@@ -88,9 +93,9 @@ const Home = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 mb-16">
             {/* Main Content */}
-            <div className="xl:col-span-2 space-y-10">
+            <div className="xl:col-span-2 space-y-12">
               <MainLayout
                 title="Latest Episode"
                 endpoint="recently-updated"
@@ -109,7 +114,7 @@ const Home = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-8">
+            <div className="space-y-10">
               <GenresLayout />
               <Top10Layout />
             </div>

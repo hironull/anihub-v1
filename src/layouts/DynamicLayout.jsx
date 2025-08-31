@@ -9,9 +9,12 @@ const DynamicLayout = ({ title, data, endpoint }) => {
   const { play: playClickSound } = useClickSound();
   
   return (
-    <div className="col-span-12 md:col-span-6 mt-6 xl:col-span-3">
-      <Heading className="mb-3 text-lg">{title}</Heading>
-      <div className="bg-black/20 border border-white/10 rounded-lg p-4 flex flex-col gap-3">
+    <div className="col-span-12 md:col-span-6 mt-6 xl:col-span-3 group">
+      <div className="flex items-center gap-3 mb-4">
+        <Heading className="text-lg font-bold">{title}</Heading>
+        <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+      </div>
+      <div className="bg-black/30 backdrop-blur-sm border border-white/15 rounded-xl p-5 flex flex-col gap-4 hover:border-white/25 transition-all duration-300 hover:bg-black/40">
         {data && data.map((item) => <MiniPoster key={item.id} item={item} />)}
         <div className="mt-1">
           <Link
