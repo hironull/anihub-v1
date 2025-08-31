@@ -51,7 +51,7 @@ button, a, [role="button"] {
   html {
     font-size: 14px;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
   }
@@ -257,65 +257,65 @@ input:focus {
     min-height: 100vh;
     min-height: 100dvh;
   }
-  
+
   .header-spacing {
     padding-top: 4rem;
   }
-  
+
   /* Ensure all containers allow scrolling */
   body, html {
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Fix any potential overflow issues on mobile */
   main {
     overflow-x: hidden;
     overflow-y: auto;
   }
-  
+
   /* Improve touch scrolling */
   * {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Mobile typography adjustments for new landing page */
   .text-5xl {
     font-size: 2.5rem;
   }
-  
+
   .text-7xl {
     font-size: 3.5rem;
   }
-  
+
   .text-8xl {
     font-size: 4rem;
   }
-  
+
   /* Mobile grid adjustments */
   .grid-cols-3 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1rem;
   }
-  
+
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Better mobile spacing */
   .space-y-4 > * + * {
     margin-top: 1rem;
   }
-  
+
   .space-y-6 > * + * {
     margin-top: 1.5rem;
   }
-  
+
   .space-y-8 > * + * {
     margin-top: 2rem;
   }
-  
+
   /* Better mobile padding for cards */
   .modern-card {
     padding: 1rem;
@@ -332,27 +332,27 @@ input:focus {
   .text-sm {
     font-size: 0.9rem;
   }
-  
+
   .text-base {
     font-size: 1rem;
   }
-  
+
   .text-lg {
     font-size: 1.125rem;
   }
-  
+
   .text-xl {
     font-size: 1.25rem;
   }
-  
+
   .text-2xl {
     font-size: 1.5rem;
   }
-  
+
   .text-3xl {
     font-size: 1.875rem;
   }
-  
+
   .text-4xl {
     font-size: 2.25rem;
   }

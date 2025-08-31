@@ -39,8 +39,8 @@ const Home = () => {
     <div className="min-h-screen bg-black pt-16 md:pt-20 relative overflow-x-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-40 left-20 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-60 right-20 w-48 h-48 bg-purple-500/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 left-20 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-60 right-20 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
       </div>
       <Helmet>
         <title>
