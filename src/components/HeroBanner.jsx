@@ -29,8 +29,8 @@ const HeroBanner = ({ slides }) => {
   // Don't render if no slides
   if (!slides || slides.length === 0) {
     return (
-      <div className="h-[50vh] md:h-[60vh] pt-16 mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-black flex items-center justify-center">
-        <div className="text-white/50 text-lg">Loading featured content...</div>
+      <div className="h-[300px] md:h-[400px] pt-16 mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-black flex items-center justify-center">
+        <div className="text-white/50 text-base md:text-lg">Loading featured content...</div>
       </div>
     );
   }
@@ -51,7 +51,7 @@ const HeroBanner = ({ slides }) => {
       }}
       navigation={true}
       onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-      className="slider h-[50vh] md:h-[60vh] pt-16 mb-8 relative overflow-hidden rounded-2xl"
+      className="slider h-auto min-h-[400px] md:min-h-[500px] pt-16 mb-8 relative overflow-hidden rounded-2xl"
     >
       {slides &&
         slides.map((item, index) => (
@@ -59,7 +59,7 @@ const HeroBanner = ({ slides }) => {
             key={item.id}
             className="relative h-full overflow-hidden bg-black"
           >
-            <div className="content w-full h-full relative">
+            <div className="content w-full min-h-[400px] md:min-h-[500px] relative flex items-end">
               {/* Backdrop */}
               <div className="hero-backdrop absolute inset-0 overflow-hidden">
                 <img
@@ -72,14 +72,14 @@ const HeroBanner = ({ slides }) => {
               </div>
 
               {/* Content Container */}
-              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl absolute bottom-6 md:bottom-8 p-4 md:p-6 lg:p-8 rounded-2xl backdrop-blur-lg border border-white/20 bg-black/40">
+              <div className="glass-dark z-10 mx-4 md:mx-12 max-w-2xl w-full md:w-auto mb-6 md:mb-8 p-4 md:p-6 lg:p-8 rounded-2xl backdrop-blur-lg border border-white/20 bg-black/60">
                 {/* Header Section */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="sleek-btn text-xs px-3 py-1 uppercase tracking-wider">
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                  <div className="sleek-btn text-[10px] md:text-xs px-2 md:px-3 py-1 uppercase tracking-wider">
                     #{item.rank} Spotlight
                   </div>
                   <div className="h-1 w-1 bg-white rounded-full opacity-50"></div>
-                  <div className="text-white/70 text-sm uppercase tracking-wide">
+                  <div className="text-white/70 text-xs md:text-sm uppercase tracking-wide">
                     Featured
                   </div>
                 </div>
@@ -87,13 +87,14 @@ const HeroBanner = ({ slides }) => {
                 {/* Title */}
                 <h1
                   title={item.title}
-                  className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 line-clamp-2 leading-tight text-white"
+                  className="text-lg md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 md:mb-4 line-clamp-1 md:line-clamp-2 leading-tight text-white"
+                  data-testid={`text-spotlight-title-${item.id}`}
                 >
                   {item.title}
                 </h1>
 
                 {/* Meta Information */}
-                <div className="flex flex-wrap gap-3 md:gap-4 mb-4 md:mb-6 text-white/80 text-xs md:text-sm">
+                <div className="flex flex-wrap gap-2 md:gap-3 mb-3 md:mb-4 text-white/80 text-[10px] md:text-xs lg:text-sm">
                   <div className="flex items-center gap-2">
                     <FaCirclePlay className="text-white" />
                     <span>{item.type}</span>
@@ -117,12 +118,12 @@ const HeroBanner = ({ slides }) => {
                 </div>
 
                 {/* Synopsis */}
-                <p className="text-white/70 text-xs md:text-sm lg:text-base line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 lg:mb-8 leading-relaxed">
+                <p className="text-white/70 text-xs md:text-sm line-clamp-2 mb-3 md:mb-4 leading-relaxed">
                   {item.synopsis}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Link
                     to={`/watch/${item.id}/1`}
                     className="sleek-btn px-4 md:px-6 py-2 md:py-3 flex items-center justify-center gap-2 text-sm md:text-base font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
