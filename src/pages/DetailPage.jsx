@@ -19,13 +19,6 @@ const DetailPage = () => {
 
   const titleId = id.split("-").slice(0, -1).join(" ").replace(",", " ");
 
-  const endsWithNumber = /\d$/;
-  const result = endsWithNumber.test(id);
-
-  if (!result) {
-    return <PageNotFound />;
-  }
-
   const showBigPoster = (url) => {
     setBigPoster(url);
   };
