@@ -121,10 +121,10 @@ const Player = ({
                         <button
                           onClick={() => setAutoPlay(!autoPlay)}
                           className={`w-10 h-6 rounded-full transition-colors duration-300 ${
-                            autoPlay ? 'bg-blue-500' : 'bg-white/20'
+                            autoPlay ? 'bg-white' : 'bg-white/20'
                           } relative`}
                         >
-                          <div className={`w-4 h-4 bg-white rounded-full absolute top-1 transition-transform duration-300 ${
+                          <div className={`w-4 h-4 ${autoPlay ? 'bg-black' : 'bg-white'} rounded-full absolute top-1 transition-transform duration-300 ${
                             autoPlay ? 'translate-x-5' : 'translate-x-1'
                           }`} />
                         </button>
@@ -153,7 +153,7 @@ const Player = ({
               }}
               className={`${
                 server === "vidWish"
-                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+                  ? "bg-white text-black shadow-lg"
                   : "bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
               } px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border border-white/10`}
               data-testid="button-server-vidwish"
@@ -229,7 +229,7 @@ const Player = ({
               {hasNextEp && (
                 <button
                   title="Next Episode"
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-4 py-2.5 rounded-xl text-white transition-all duration-300 shadow-lg flex items-center gap-2"
+                  className="bg-white hover:bg-gray-200 px-4 py-2.5 rounded-xl text-black transition-all duration-300 shadow-lg flex items-center gap-2"
                   onClick={() => {
                     playClickSound();
                     changeEpisode("next");
