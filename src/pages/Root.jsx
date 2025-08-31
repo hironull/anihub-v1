@@ -1,5 +1,6 @@
 import { FaSearch, FaPlay, FaStar, FaHeart } from "react-icons/fa";
-import { FaArrowRight, FaSparkles } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+import { FaSparkles } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
