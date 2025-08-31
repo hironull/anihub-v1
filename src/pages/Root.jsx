@@ -139,7 +139,7 @@ const Root = () => {
       {/* Footer */}
       <footer className="relative z-10 text-center py-8 border-t border-white/10 mt-20">
         <p className="text-gray-400">
-          © 2024 AniHub. Experience anime streaming at its finest.
+          © 2025 AniHub. Experience anime streaming at its finest.
         </p>
       </footer>
     </div>
