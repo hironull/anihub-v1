@@ -297,7 +297,6 @@ input:focus {
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1rem;
   }
-}
   
   .container {
     padding-left: 1rem;
@@ -321,12 +320,15 @@ input:focus {
   .modern-card {
     padding: 1rem;
   }
-  
-  .glass, .glass-dark {
-    padding: 1rem;
-  }
-  
-  /* Improved mobile typography */
+}
+
+/* Additional global styles */
+.glass, .glass-dark {
+  padding: 1rem;
+}
+
+/* Improved mobile typography */
+@media screen and (max-width: 768px) {
   .text-sm {
     font-size: 0.9rem;
   }
