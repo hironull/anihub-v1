@@ -36,7 +36,7 @@ AniHub is a modern, mobile-first anime streaming web application built with Reac
 
 ### Vercel
 
-Host your own instance of <a href="https://anihub-seven.vercel.app/">AniHub</a>  on vercel
+Host your own instance of <a href="https://anihub-seven.vercel.app/">AniHub</a> on Vercel
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hironull/anihub-v1)
 
@@ -46,10 +46,13 @@ Host your own instance of <a href="https://anihub-seven.vercel.app/">Anihub</a> 
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/hironull/anihub-v1)
 
-Keep secret keys out of your repository and use environment variables for production environments (Vercel, Netlify, etc.).
+You can also deploy your own backend API if you prefer to self-host the API instead of using the public one. A popular, compatible option is the "anime-api" project: https://github.com/itzzzme/anime-api. Follow that repository's README to deploy a backend API (it supports several deployment methods) and then point AniHub's API base URL to your self-hosted endpoint via environment variables.
 
+Keep secret keys out of your repository and use environment variables for production environments (Vercel, Netlify, etc.).
 
 ## Contact
 
 Join our discord server :
 https://discord.gg/meet
+
+This was developed by hironull16 on Discord. Portfolio: https://www.hironull.lol/
