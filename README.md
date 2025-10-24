@@ -32,40 +32,22 @@ AniHub is a modern, mobile-first anime streaming web application built with Reac
 - Multiple video players to support different stream types and fallbacks.
 - Mobile-first responsive design using TailwindCSS with custom theme colors.
 
-## Getting Started
+## Live Deployment
 
-Prerequisites:
-- Node.js (LTS) and npm or yarn installed
-- Optional: pnpm if you use it for package management
+### Vercel
 
-Quick start (npm):
-1. Clone the repo
-   git clone https://github.com/hironull/anihub2.O.git
-2. Install dependencies
-   cd anihub2.O
-   npm install
-3. Start the dev server
-   npm run dev
-4. Build for production
-   npm run build
-5. Preview the production build locally
-   npm run dev
+Host your own instance of <a href="https://anihub-seven.vercel.app/">AniHub</a>  on vercel
 
-Replace npm with yarn or pnpm commands if you prefer.
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hironull/anihub-v1)
 
-## Environment Variables
+### Render
 
-Create a .env file in the project root (or use .env.example) and set environment-specific values, for example:
+Host your own instance of <a href="https://anihub-seven.vercel.app/">Anihub</a> on Render.
 
-VITE_API_BASE_URL=https://api.example.com
-# Add other keys required for players, analytics, or 3rd-party services
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/hironull/anihub-v1)
 
 Keep secret keys out of your repository and use environment variables for production environments (Vercel, Netlify, etc.).
 
-## Deployment
-
-- The project is optimized for deployment to static hosts (Vercel, Netlify, Cloudflare Pages).
-- For Vercel, use the Vite build output and set proper environment variables and rewrites if you proxy API requests.
 
 ## Contact
 
